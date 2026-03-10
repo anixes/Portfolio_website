@@ -65,7 +65,8 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
             className={`absolute inset-0 text-[#C5C6C7] smooth-transition origin-center overflow-y-auto overflow-x-hidden hide-scrollbar md:overflow-hidden overscroll-contain
         ${view === 'grid' ? 'opacity-100 z-20 scale-100 pointer-events-auto' : 'opacity-0 z-0 scale-95 pointer-events-none'}`}
         >
-            <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
+            {/* Pure Mobile Stack vs Desktop Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
                 <style>{`
                   @keyframes cyber-glitch {
                     0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); filter: brightness(2) hue-rotate(90deg); }
@@ -89,7 +90,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ANIXES.IN Main Tile (Mobile Only) */}
                 <div
                     onClick={() => setView('hero')}
-                    className={`md:hidden min-h-[130px] sm:min-h-[180px] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-hidden`}
+                    className={`col-span-2 order-1 md:hidden min-h-[130px] sm:min-h-[180px] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both' : 'none',
                     }}
@@ -111,7 +112,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* PROJECTS - Large Main Block (Top Left) */}
                 <div
                     onClick={() => setView('projects')}
-                    className={`${activeLayout[0].replace(/col-span-[0-9]+ order-[0-9]+ /g, '')} min-h-[250px] sm:min-h-[300px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 pb-10 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 pb-10 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both' : 'none',
                     }}
@@ -135,7 +136,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ABOUT - Tall Side Block (Top Middle) */}
                 <div
                     onClick={() => setView('about')}
-                    className={`${activeLayout[1].replace(/col-span-[0-9]+ order-[0-9]+ /g, '')} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[1]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both' : 'none',
                     }}
@@ -154,7 +155,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* NOTES - Tall Full Edge Block (Right Edge) */}
                 <div
                     onClick={() => setView('notes')}
-                    className={`${activeLayout[2].replace(/col-span-[0-9]+ order-[0-9]+ /g, '')} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 pt-12 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[2]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 pt-12 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both' : 'none',
                     }}
@@ -178,7 +179,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
 
                 {/* CONTACT - Wide Bottom Block */}
                 <div
-                    className={`${activeLayout[3].replace(/col-span-[0-9]+ order-[0-9]+ /g, '')} min-h-[200px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 md:p-12 mb-20 md:mb-0 group relative overflow-hidden`}
+                    className={`${activeLayout[3]} min-h-[200px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 md:p-12 mb-20 md:mb-0 group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both' : 'none',
                     }}

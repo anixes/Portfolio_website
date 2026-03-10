@@ -26,8 +26,8 @@ export default function AboutView({ view, setView }: AboutViewProps) {
                 </div>
 
                 <div className="flex flex-col border-l-2 md:border-l border-[#27272A] pl-6 md:pl-10">
-                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase flex items-baseline gap-4">
-                        About. <span className="text-[10px] font-mono text-[#A1A1AA] tracking-[0.5em] animate-pulse">[[ ID_VERIFIED ]]</span>
+                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
+                        About. <span className="text-[10px] font-mono text-[#A1A1AA] tracking-[0.4em] animate-pulse">[[ ID_VERIFIED ]]</span>
                     </h1>
                     <div className="space-y-6 text-base md:text-lg text-[#C5C6C7]/80 leading-relaxed font-light uppercase tracking-wide">
                         <p>{portfolioData.personalInfo.bio.split('.')[0]}.</p>
