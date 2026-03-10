@@ -12,7 +12,7 @@ interface AboutViewProps {
 export default function AboutView({ view, setView }: AboutViewProps) {
     return (
         <div
-            className={`absolute inset-0 flex flex-col w-full h-screen text-[#C5C6C7] overflow-y-auto p-8 pt-24 md:p-20 items-center justify-start md:justify-center smooth-transition bg-[#000000]
+            className={`absolute inset-0 flex flex-col w-full h-[100dvh] text-[#C5C6C7] overflow-y-auto p-6 pt-24 md:p-20 items-center justify-start md:justify-center smooth-transition bg-[#000000]
         ${view === 'about' ? 'opacity-100 z-20 pointer-events-auto scale-100' : 'opacity-0 z-0 pointer-events-none scale-105'}`}
         >
             <button onClick={() => setView('grid')} className="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-white transition-colors z-20 bg-[#000000]/80 p-2 md:p-0 rounded-md backdrop-blur-sm">

@@ -56,7 +56,7 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
         >
             {/* Left Sidebar Index */}
             <div
-                className={`w-full shrink-0 md:w-[30%] h-auto md:h-screen md:fixed left-0 border-b md:border-b-0 md:border-r border-[#27272A] bg-[#000000] p-6 md:p-16 overflow-visible md:overflow-y-auto hide-scrollbar z-10 flex flex-col justify-between smooth-transition delay-100
+                className={`w-full shrink-0 md:w-[30%] h-auto md:h-screen md:fixed left-0 border-b md:border-b-0 md:border-r border-[#27272A] bg-[#000000] p-6 pt-12 md:p-16 overflow-visible md:overflow-y-auto hide-scrollbar z-10 flex flex-col justify-between smooth-transition delay-100
           ${view === 'projects' ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}
             >
                 <div>
@@ -87,10 +87,10 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
 
             {/* Right Scrollable Content */}
             <div
-                className={`w-full shrink-0 md:w-[70%] md:ml-[30%] h-auto md:h-screen overflow-visible md:overflow-y-auto p-6 md:p-24 smooth-transition delay-150 bg-[#0A0A0A]
+                className={`w-full shrink-0 md:w-[70%] md:ml-[30%] h-auto md:h-screen overflow-visible md:overflow-y-auto p-6 py-12 md:p-24 smooth-transition delay-150 bg-[#0A0A0A]
           ${view === 'projects' ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}
             >
-                <h2 className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-[0.4em] mb-16 border-b border-[#27272A] pb-4 flex justify-between">
+                <h2 className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-[0.4em] mb-12 md:mb-16 border-b border-[#27272A] pb-4 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-2">
                     <span>SELECTED_WORKS</span>
                     <span className="animate-pulse">RUNNING_STABLE</span>
                 </h2>
@@ -121,13 +121,13 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover/image:opacity-80 transition-opacity duration-700"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-70 md:opacity-40 group-hover/image:opacity-90 transition-opacity duration-700"
                                 />
                             )}
                             <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
 
-                            <div className="z-10 text-center bg-[#0A0A0A]/90 backdrop-blur-md p-12 border border-[#27272A] shadow-2xl relative">
-                                <p className="font-mono text-[10px] text-[#A1A1AA] mb-8 uppercase tracking-[0.5em] animate-pulse">[[ NEURAL_RENDER_ACTIVE ]]</p>
+                            <div className="z-10 text-center bg-[#0A0A0A]/90 backdrop-blur-md p-6 md:p-12 border border-[#27272A] shadow-2xl relative w-[90%] md:w-auto">
+                                <p className="font-mono text-[9px] md:text-[10px] text-[#A1A1AA] mb-6 md:mb-8 uppercase tracking-[0.3em] md:tracking-[0.5em] animate-pulse">[[ NEURAL_RENDER_ACTIVE ]]</p>
                                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full">
                                     <a
                                         href={project.links.live}

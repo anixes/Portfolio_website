@@ -13,45 +13,40 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
     const blueprintPattern = `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 40H0V0h40v40zM1 1h38v38H1V1z' fill='none' stroke='%2345A29E' stroke-opacity='0.1' stroke-dasharray='2,2'/%3E%3C/svg%3E")`;
 
     const bentoLayouts = [
-        [
-            "md:col-span-2 md:col-start-1 md:row-span-2 md:row-start-1 flex-col items-start justify-end", // Projects
-            "md:col-span-1 md:col-start-3 md:row-span-2 md:row-start-1 flex-col items-center justify-center", // About
-            "md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start", // Notes
-            "md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between", // Connect
-            "66.66%", // top position of logo
-            "50%"     // left position of logo
+        [ // Layout 1: Desktop Left-heavy | Mobile: Normal flow, About & Notes side-by-side
+            "col-span-2 order-2 md:order-none md:col-span-2 md:col-start-1 md:row-span-2 md:row-start-1 flex-col items-start justify-end",
+            "col-span-1 order-3 md:order-none md:col-span-1 md:col-start-3 md:row-span-2 md:row-start-1 flex-col items-center justify-center",
+            "col-span-1 order-4 md:order-none md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start",
+            "col-span-2 order-5 md:order-none md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between",
+            "66.66%", "50%"
         ],
-        [
-            "md:col-span-2 md:col-start-3 md:row-span-2 md:row-start-1 flex-col items-end justify-end text-right",
-            "md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 flex-col items-center justify-center",
-            "md:col-span-1 md:col-start-1 md:row-span-3 md:row-start-1 flex-col items-start justify-start",
-            "md:col-span-3 md:col-start-2 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between",
-            "66.66%",
-            "50%"
+        [ // Layout 2: Desktop Right | Mobile: Projects & About sideways
+            "col-span-1 order-3 md:order-none md:col-span-2 md:col-start-3 md:row-span-2 md:row-start-1 flex-col items-end justify-end text-right md:text-left",
+            "col-span-1 order-2 md:order-none md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-1 flex-col items-center justify-center",
+            "col-span-2 order-4 md:order-none md:col-span-1 md:col-start-1 md:row-span-3 md:row-start-1 flex-col items-start justify-start",
+            "col-span-2 order-5 md:order-none md:col-span-3 md:col-start-2 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between",
+            "66.66%", "50%"
         ],
-        [
-            "md:col-span-2 md:col-start-1 md:row-span-2 md:row-start-2 flex-col items-start justify-end",
-            "md:col-span-1 md:col-start-3 md:row-span-2 md:row-start-2 flex-col items-center justify-center",
-            "md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start",
-            "md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-1 flex-col md:flex-row items-start md:items-start justify-between",
-            "33.33%",
-            "50%"
+        [ // Layout 3: Desktop Bottom | Mobile: Notes first layout
+            "col-span-2 order-4 md:order-none md:col-span-2 md:col-start-1 md:row-span-2 md:row-start-2 flex-col items-start justify-end",
+            "col-span-1 order-2 md:order-none md:col-span-1 md:col-start-3 md:row-span-2 md:row-start-2 flex-col items-center justify-center",
+            "col-span-1 order-3 md:order-none md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start",
+            "col-span-2 order-5 md:order-none md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-1 flex-col md:flex-row items-start md:items-start justify-between",
+            "33.33%", "50%"
         ],
-        [
-            "md:col-span-2 md:col-start-3 md:row-span-2 md:row-start-2 flex-col items-end justify-end text-right",
-            "md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-2 flex-col items-center justify-center",
-            "md:col-span-1 md:col-start-1 md:row-span-3 md:row-start-1 flex-col items-start justify-start",
-            "md:col-span-3 md:col-start-2 md:row-span-1 md:row-start-1 flex-col md:flex-row items-start md:items-start justify-between",
-            "33.33%",
-            "50%"
+        [ // Layout 4: Desktop Top Edge | Mobile: Fully vertical shuffle
+            "col-span-2 order-4 md:order-none md:col-span-2 md:col-start-3 md:row-span-2 md:row-start-2 flex-col items-end justify-end text-right",
+            "col-span-2 order-3 md:order-none md:col-span-1 md:col-start-2 md:row-span-2 md:row-start-2 flex-col items-center justify-center",
+            "col-span-2 order-2 md:order-none md:col-span-1 md:col-start-1 md:row-span-3 md:row-start-1 flex-col items-start justify-start",
+            "col-span-2 order-5 md:order-none md:col-span-3 md:col-start-2 md:row-span-1 md:row-start-1 flex-col md:flex-row items-start md:items-start justify-between",
+            "33.33%", "50%"
         ],
-        [
-            "md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-1 flex-col items-center justify-end text-center",
-            "md:col-span-1 md:col-start-1 md:row-span-2 md:row-start-1 flex-col items-center justify-center",
-            "md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start",
-            "md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between",
-            "66.66%",
-            "25%"
+        [ // Layout 5: Desktop Centric | Mobile: Notes & About swapped
+            "col-span-2 order-2 md:order-none md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-1 flex-col items-center justify-end text-center md:text-left",
+            "col-span-1 order-4 md:order-none md:col-span-1 md:col-start-1 md:row-span-2 md:row-start-1 flex-col items-center justify-center",
+            "col-span-1 order-3 md:order-none md:col-span-1 md:col-start-4 md:row-span-3 md:row-start-1 flex-col items-end justify-start",
+            "col-span-2 order-5 md:order-none md:col-span-3 md:col-start-1 md:row-span-1 md:row-start-3 flex-col md:flex-row items-start md:items-end justify-between",
+            "66.66%", "25%"
         ]
     ];
 
@@ -70,7 +65,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
             className={`absolute inset-0 text-[#C5C6C7] smooth-transition origin-center overflow-y-auto overflow-x-hidden hide-scrollbar md:overflow-hidden overscroll-y-contain
         ${view === 'grid' ? 'opacity-100 z-20 scale-100 pointer-events-auto' : 'opacity-0 z-0 scale-95 pointer-events-none'}`}
         >
-            <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-3 min-h-max md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
+            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
                 <style>{`
                   @keyframes cyber-glitch {
                     0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); filter: brightness(2) hue-rotate(90deg); }
@@ -94,7 +89,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ANIXES.IN Main Tile (Mobile Only) */}
                 <div
                     onClick={() => setView('hero')}
-                    className={`md:hidden min-h-[20vh] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-hidden`}
+                    className={`col-span-2 order-1 md:hidden min-h-[130px] sm:min-h-[180px] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both' : 'none',
                     }}
@@ -140,7 +135,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ABOUT - Tall Side Block (Top Middle) */}
                 <div
                     onClick={() => setView('about')}
-                    className={`${activeLayout[1]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 md:p-10 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[1]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both' : 'none',
                     }}
@@ -159,7 +154,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* NOTES - Tall Full Edge Block (Right Edge) */}
                 <div
                     onClick={() => setView('notes')}
-                    className={`${activeLayout[2]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[2]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 pt-12 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both' : 'none',
                     }}
