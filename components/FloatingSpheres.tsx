@@ -69,8 +69,8 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
     const cyanLight = useRef<THREE.PointLight>(null!);
     const purpleLight = useRef<THREE.PointLight>(null!);
 
-    // Load Sci-Fi Texture
-    const texture = useTexture('/scifi_texture.png');
+    // Load Sci-Fi Texture with unique filename to bypass any caching
+    const texture = useTexture('/city_texture.png');
     texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
     useFrame((state) => {
@@ -87,23 +87,18 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
 
     const outerMaterial = useMemo(() => new THREE.MeshPhysicalMaterial({
         color: '#ffffff',
-        metalness: 0.1,
+        metalness: 1.0,
         roughness: 0.05,
-        transmission: 0.98,
-        ior: 1.5,
-        thickness: 1.5,
         clearcoat: 1,
         clearcoatRoughness: 0.1,
-        attenuationColor: new THREE.Color('#45A29E'),
-        attenuationDistance: 1,
+        envMapIntensity: 2.5,
     }), []);
 
     const innerMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-        map: texture,
-        emissive: new THREE.Color('#45A29E'),
-        emissiveIntensity: 0.5,
-        emissiveMap: texture,
-    }), [texture]);
+        color: '#ffffff',
+        metalness: 1.0,
+        roughness: 0.0,
+    }), []);
 
     // Generate 20 randomized spheres
     const spheresData = useMemo(() => {
@@ -120,7 +115,7 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
 
     return (
         <>
-            <Environment preset="city" />
+            <Environment preset="studio" />
             <ambientLight intensity={0.2} />
 
             <pointLight ref={cyanLight} color="#45A29E" intensity={150} distance={20} decay={2} />

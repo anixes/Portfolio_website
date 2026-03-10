@@ -45,7 +45,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#1F2833] group-hover:text-[#45A29E] transition-colors relative z-10">
+                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#5C6B73] group-hover:text-[#45A29E] transition-colors relative z-10">
                         <span className="group-hover:underline decoration-1 underline-offset-[12px]">PROJECTS.</span>
                     </h2>
                 </div>
@@ -59,7 +59,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#1F2833] group-hover:text-[#45A29E] transition-colors relative z-10">
+                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#5C6B73] group-hover:text-[#45A29E] transition-colors relative z-10">
                         <span className="group-hover:underline decoration-1 underline-offset-[12px]">ABOUT.</span>
                     </h2>
                 </div>
@@ -73,7 +73,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
-                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#1F2833] group-hover:text-[#45A29E] transition-colors relative z-10">
+                    <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[#5C6B73] group-hover:text-[#45A29E] transition-colors relative z-10">
                         <span className="group-hover:underline decoration-1 underline-offset-[12px]">NOTES.</span>
                     </h2>
                 </div>
@@ -86,8 +86,8 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
-                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 text-[#1F2833] group-hover:text-white transition-colors relative z-10 uppercase">Contact.</h2>
-                    <div className="space-y-4 text-xs font-mono tracking-[0.2em] text-[#1F2833] w-full pointer-events-auto relative z-10 uppercase">
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tighter mb-10 text-[#5C6B73] group-hover:text-white transition-colors relative z-10 uppercase">Contact.</h2>
+                    <div className="space-y-4 text-xs font-mono tracking-[0.2em] text-[#5C6B73] w-full pointer-events-auto relative z-10 uppercase">
                         <a href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center justify-between hover:text-[#45A29E] transition-colors border-b border-[#1F2833] pb-3 w-full">
                             {portfolioData.personalInfo.email} <ArrowUpRight size={16} className="text-[#45A29E]" />
                         </a>
@@ -114,7 +114,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 <div className="relative z-10 w-24 h-24 md:w-32 md:h-32 bg-[#0B0C10] border border-[#1F2833] flex items-center justify-center group overflow-hidden">
                     <div className="absolute inset-0 bg-[radial-gradient(#1F2833_1px,transparent_1px)] [background-size:12px_12px] opacity-20 group-hover:scale-150 transition-transform duration-1000"></div>
                     <span className="text-white font-black text-xl md:text-2xl tracking-tighter group-hover:text-[#45A29E] transition-colors relative z-10">ANIXES<span className="text-[#45A29E]">.IN</span></span>
-                    <div className="absolute bottom-2 font-mono text-[8px] text-[#1F2833] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">SYS_ACTIVE</div>
+                    <div className="absolute bottom-2 font-mono text-[8px] text-[#5C6B73] tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">SYS_ACTIVE</div>
                 </div>
             </div>
         </div>

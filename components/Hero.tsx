@@ -12,6 +12,59 @@ interface HeroProps {
     onEnter: () => void;
 }
 
+const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
+    const roles = [
+        { text: "MACHINE LEARNING.", color: "text-[#7289DA]", shadow: "rgba(114, 137, 218, 0.6)" },
+        { text: "DATA SCIENCE.", color: "text-[#45A29E]", shadow: "rgba(69, 162, 158, 0.6)" },
+        { text: "ARTIFICIAL INTELLIGENCE.", color: "text-[#66FCF1]", shadow: "rgba(102, 252, 241, 0.6)" },
+        { text: "VIBE CODING.", color: "text-[#D72638]", shadow: "rgba(215, 38, 56, 0.6)" },
+        { text: "BACKEND.", color: "text-[#F49F0A]", shadow: "rgba(244, 159, 10, 0.6)" },
+        { text: "FRONTEND.", color: "text-[#00E5FF]", shadow: "rgba(0, 229, 255, 0.6)" }
+    ];
+    const [roleIndex, setRoleIndex] = useState(0);
+    const [display, setDisplay] = useState(roles[0].text);
+    const [isGlitching, setIsGlitching] = useState(false);
+    const chars = '01ABCDEF_/><*&%';
+
+    useEffect(() => {
+        if (phase !== 3) return;
+        const interval = setInterval(() => {
+            const nextIndex = (roleIndex + 1) % roles.length;
+            const nextRole = roles[nextIndex].text;
+
+            setIsGlitching(true);
+            // Glitch effect before changing
+            const glitchText = nextRole.split('').map(char =>
+                Math.random() > 0.6 && char !== ' ' ? chars[Math.floor(Math.random() * chars.length)] : char
+            ).join('');
+
+            setDisplay(glitchText);
+
+            setTimeout(() => {
+                setDisplay(nextRole);
+                setRoleIndex(nextIndex);
+                setIsGlitching(false);
+            }, 150);
+        }, 1200);
+
+        return () => clearInterval(interval);
+    }, [roleIndex, phase]);
+
+    const currentRole = roles[roleIndex];
+
+    return (
+        <p
+            className={`text-xl md:text-3xl font-mono tracking-widest ${currentRole.color} transition-all duration-300 absolute ${phase === 3 ? 'opacity-100' : 'opacity-0'}`}
+            style={{
+                textShadow: isGlitching ? `0 0 20px ${currentRole.shadow}, 0 0 40px ${currentRole.shadow}` : 'none',
+                transform: isGlitching ? 'scale(1.05) skewX(-5deg)' : 'scale(1) skewX(0)',
+            }}
+        >
+            {display}
+        </p>
+    );
+};
+
 const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
     const [display, setDisplay] = useState(text);
     const [isLastName, setIsLastName] = useState(false);
@@ -64,21 +117,27 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 
     return (
         <h1
-            className="text-[5.5rem] md:text-[9.5rem] leading-none font-black text-white tracking-tighter select-none mix-blend-overlay cursor-crosshair flex gap-1 md:gap-2 group transition-all duration-700"
+            className="text-[5.5rem] md:text-[9.5rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex gap-1 md:gap-2 group transition-all duration-700 relative z-20"
         >
-            {display.split('').map((char, i) => (
-                <span
-                    key={i}
-                    className="inline-block group-hover:text-[#45A29E] transition-colors duration-300 ease-out py-2"
-                    style={{
-                        textShadow: (display !== text && display !== lastName) || isLastName
-                            ? '0 0 25px rgba(69, 162, 158, 0.6)'
-                            : 'none'
-                    }}
-                >
-                    {char}
-                </span>
-            ))}
+            {display.split('').map((char, i) => {
+                const isGlitching = display !== text && display !== lastName;
+                const isLastNameStr = display === lastName;
+
+                return (
+                    <span
+                        key={i}
+                        className={`inline-block transition-colors duration-300 ease-out py-2 ${isLastNameStr ? 'text-[#45A29E]' : 'text-white group-hover:text-[#66FCF1]'}`}
+                        style={{
+                            textShadow: isGlitching || isLastNameStr
+                                ? '0 0 20px rgba(69, 162, 158, 0.8), 0 0 40px rgba(69, 162, 158, 0.4)'
+                                : '0 15px 35px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.3)',
+                            transform: isGlitching ? 'scale(1.1) skewX(-10deg)' : 'scale(1) skewX(0)',
+                        }}
+                    >
+                        {char}
+                    </span>
+                )
+            })}
         </h1>
     );
 };
@@ -116,9 +175,7 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
                             <p className={`text-xl md:text-3xl font-mono tracking-widest text-[#45A29E] transition-opacity duration-700 absolute ${titlePhase >= 1 && titlePhase < 3 ? 'opacity-100' : 'opacity-0'}`}>
                                 DATA SCIENTIST.
                             </p>
-                            <p className={`text-xl md:text-3xl font-mono tracking-widest text-[#7289DA] transition-opacity duration-700 absolute ${titlePhase === 3 ? 'opacity-100' : 'opacity-0'}`}>
-                                ML ENGINEER.
-                            </p>
+                            <AnimatedRoleTitle phase={titlePhase} />
                         </div>
                         <p className="mt-20 text-[10px] font-mono text-[#45A29E] animate-pulse tracking-[0.3em] uppercase bg-black/40 px-6 py-3 rounded-full backdrop-blur-md border border-[#45A29E]/30">
                             Click to access main terminal
@@ -128,7 +185,7 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
             </div>
 
             {/* Footer Credit */}
-            <div className="absolute bottom-10 right-10 text-[9px] font-mono text-[#1F2833] uppercase tracking-[0.4em] flex items-center gap-4">
+            <div className="absolute bottom-10 right-10 text-[9px] font-mono text-[#5C6B73] uppercase tracking-[0.4em] flex items-center gap-4">
                 <div className="w-16 h-[1px] bg-[#1F2833]"></div>
                 AESTHETIC: OBSIDIAN IRIDESCENCE
             </div>
