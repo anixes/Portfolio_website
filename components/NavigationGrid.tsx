@@ -66,7 +66,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
         ${view === 'grid' ? 'opacity-100 z-20 scale-100 pointer-events-auto' : 'opacity-0 z-0 scale-95 pointer-events-none'}`}
         >
             {/* Pure Mobile Stack vs Desktop Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
+            <div className="flex flex-col md:grid md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
                 <style>{`
                   @keyframes cyber-glitch {
                     0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); }

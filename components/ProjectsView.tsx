@@ -64,12 +64,12 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                         <ArrowLeft size={14} /> Back to Terminal
                     </button>
                     <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">INDEX_</h1>
-                    <p className="text-[#FFFFFF]/40 text-xs font-mono leading-relaxed mb-16 max-w-[250px] uppercase tracking-wider">
+                    <p className="text-[#FFFFFF]/40 text-xs font-mono leading-relaxed mb-16 w-full md:max-w-[250px] uppercase tracking-wider">
                         Exploration of neural architectures, algorithmic datasets, and predictive modeling protocols.
                     </p>
-                    <div className="mb-12">
+                    <div className="mb-12 w-full">
                         <h3 className="text-[10px] font-black text-[#A1A1AA] uppercase tracking-[0.3em] mb-5">By Protocol:</h3>
-                        <ul className="space-y-4 font-mono text-[10px] text-[#FFFFFF]">
+                        <ul className="space-y-4 font-mono text-[10px] text-[#FFFFFF] w-full">
                             {['00 Python', '01 SQL', '02 Next.js', '03 TensorFlow', '04 Scikit-Learn'].map((tech, i) => (
                                 <li key={i} className="flex hover:text-white cursor-pointer transition-colors group">
                                     <span className="w-10 text-[#A1A1AA] group-hover:text-[#FFFFFF]">/{tech.split(' ')[0]}</span>
@@ -90,16 +90,16 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                 className={`w-full shrink-0 md:w-[70%] md:ml-[30%] h-auto md:h-screen overflow-visible md:overflow-y-auto p-6 py-12 md:p-24 smooth-transition delay-150 bg-[#0A0A0A]
           ${view === 'projects' ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}
             >
-                <h2 className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-[0.4em] mb-12 md:mb-16 border-b border-[#27272A] pb-4 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-2">
+                <h2 className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-[0.4em] mb-12 md:mb-16 border-b border-[#27272A] pb-4 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-2 text-left w-full">
                     <span>SELECTED_WORKS</span>
-                    <span className="animate-pulse">RUNNING_STABLE</span>
+                    <span className="animate-pulse text-left w-full md:text-right md:w-auto">RUNNING_STABLE</span>
                 </h2>
 
                 {portfolioData.projects.map((project, idx) => (
                     <div key={project.id} className="mb-32 md:mb-48 group">
                         <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-8 border-l-2 border-[#27272A] pl-6 group-hover:border-[#FFFFFF] transition-colors">
-                            <div className="flex flex-col gap-2">
-                                <span className="font-mono text-[10px] text-[#A1A1AA] tracking-widest uppercase mb-1">PROT_VER: {project.year}</span>
+                            <div className="flex flex-col gap-2 w-full">
+                                <span className="font-mono text-[10px] text-[#A1A1AA] tracking-widest uppercase mb-1 w-full text-left">PROT_VER: {project.year}</span>
                                 <DecipherTitle text={project.title.toUpperCase()} />
                             </div>
                         </div>
