@@ -19,17 +19,17 @@ export default function AboutView({ view, setView }: AboutViewProps) {
                 <ArrowLeft size={16} /> BACK_TO_HUB
             </button>
 
-            <div className={`max-w-4xl w-full flex flex-col md:flex-row gap-12 md:gap-24 items-center md:items-start z-10 mt-8 md:mt-0 smooth-transition delay-100 ${view === 'about' ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+            <div className={`max-w-4xl w-full flex flex-col md:flex-row gap-8 md:gap-24 items-center md:items-start z-10 mt-8 md:mt-0 smooth-transition delay-100 ${view === 'about' ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                 <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 bg-[#0A0A0A] border border-[#27272A] rounded-none flex items-center justify-center relative overflow-hidden group">
                     <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:12px:12px] opacity-20 group-hover:scale-110 transition-transform duration-700"></div>
                     <span className="font-mono text-[9px] text-[#A1A1AA] tracking-[0.4em] uppercase relative z-10 group-hover:text-[#FFFFFF] transition-colors">NEURAL_ID:ANIMESH</span>
                 </div>
 
                 <div className="flex flex-col border-l-2 md:border-l border-[#27272A] pl-6 md:pl-10">
-                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-8 text-white uppercase flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
+                    <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-6 md:mb-8 text-white uppercase flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4">
                         About. <span className="text-[10px] font-mono text-[#A1A1AA] tracking-[0.4em] animate-pulse">[[ ID_VERIFIED ]]</span>
                     </h1>
-                    <div className="space-y-6 text-base md:text-lg text-[#C5C6C7]/80 leading-relaxed font-light uppercase tracking-wide">
+                    <div className="space-y-4 md:space-y-6 text-base md:text-lg text-[#C5C6C7]/80 leading-relaxed font-light uppercase tracking-wide">
                         <p>{portfolioData.personalInfo.bio.split('.')[0]}.</p>
                         <p>With a strong foundation in <span className="text-white font-black border-b border-[#FFFFFF]">PYTHON, SQL, AND MLOPS</span>, I specialize in translating complex datasets into actionable insights and deploying production-ready models.</p>
                         <p className="border-t border-[#27272A]/30 pt-6">I am currently developing a portfolio of end-to-end machine learning applications, including a real estate price prediction and recommendation engine, while continuously refining my algorithmic problem-solving skills to build highly optimized systems.</p>
