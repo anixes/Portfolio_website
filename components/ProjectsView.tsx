@@ -96,7 +96,7 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                 </h2>
 
                 {portfolioData.projects.map((project, idx) => (
-                    <div key={project.id} className="mb-48 group">
+                    <div key={project.id} className="mb-32 md:mb-48 group">
                         <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-8 border-l-2 border-[#27272A] pl-6 group-hover:border-[#FFFFFF] transition-colors">
                             <div className="flex flex-col gap-2">
                                 <span className="font-mono text-[10px] text-[#A1A1AA] tracking-widest uppercase mb-1">PROT_VER: {project.year}</span>
@@ -104,19 +104,19 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                             </div>
                         </div>
 
-                        <p className="text-base text-[#C5C6C7]/80 font-light leading-relaxed mb-10 max-w-3xl border-b border-[#27272A]/30 pb-10">
+                        <p className="text-base text-[#C5C6C7]/80 font-light leading-relaxed mb-6 md:mb-10 max-w-3xl border-b border-[#27272A]/30 pb-10">
                             {project.description}
                         </p>
 
-                        <div className="flex flex-wrap gap-4 mb-12 font-mono text-[10px] uppercase tracking-[0.2em]">
+                        <div className="flex flex-wrap gap-2 md:gap-4 mb-8 md:mb-12 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
                             {project.techStack.map(tech => (
-                                <span key={tech} className="bg-[#000000] text-[#FFFFFF] px-4 py-2 rounded-none border border-[#27272A] hover:border-[#FFFFFF] hover:text-white transition-all cursor-default hover:after:content-['|'] hover:after:animate-pulse">
+                                <span key={tech} className="bg-[#000000] text-[#FFFFFF] px-3 py-1.5 md:px-4 md:py-2 rounded-none border border-[#27272A] hover:border-[#FFFFFF] hover:text-white transition-all cursor-default hover:after:content-['|'] hover:after:animate-pulse">
                                     {tech}
                                 </span>
                             ))}
                         </div>
 
-                        <div className="w-full aspect-[16/9] bg-[#000000] rounded-none overflow-hidden relative border border-[#27272A] flex items-center justify-center group-hover:border-[#FFFFFF]/50 transition-colors group/image">
+                        <div className="w-full aspect-[4/5] sm:aspect-square md:aspect-[16/9] bg-[#000000] rounded-none overflow-hidden relative border border-[#27272A] flex items-center justify-center group-hover:border-[#FFFFFF]/50 transition-colors group/image">
                             {project.image && (
                                 <img
                                     src={project.image}
@@ -126,20 +126,20 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                             )}
                             <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
 
-                            <div className="z-10 text-center bg-[#0A0A0A]/90 backdrop-blur-md p-6 md:p-12 border border-[#27272A] shadow-2xl relative w-[90%] md:w-auto">
+                            <div className="z-10 text-center bg-[#0A0A0A]/90 backdrop-blur-md p-4 sm:p-6 md:p-12 border border-[#27272A] shadow-2xl relative w-[90%] md:w-auto">
                                 <p className="font-mono text-[9px] md:text-[10px] text-[#A1A1AA] mb-6 md:mb-8 uppercase tracking-[0.3em] md:tracking-[0.5em] animate-pulse">[[ NEURAL_RENDER_ACTIVE ]]</p>
-                                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full">
+                                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center w-full">
                                     <a
                                         href={project.links.live}
                                         target="_blank" rel="noopener noreferrer"
-                                        className="px-6 sm:px-8 py-3 bg-[#FFFFFF] text-[#0B0C10] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all w-full sm:w-auto"
+                                        className="px-4 py-3 sm:px-8 bg-[#FFFFFF] text-[#0B0C10] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all w-full sm:w-auto"
                                     >
                                         LIVE_SIM <ArrowUpRight size={14} />
                                     </a>
                                     <a
                                         href={project.links.github}
                                         target="_blank" rel="noopener noreferrer"
-                                        className="px-6 sm:px-8 py-3 bg-transparent text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-[#FFFFFF] hover:text-[#FFFFFF] transition-all w-full sm:w-auto"
+                                        className="px-4 py-3 sm:px-8 bg-transparent text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-[#FFFFFF] hover:text-[#FFFFFF] transition-all w-full sm:w-auto"
                                     >
                                         ACCESS_SRC <Github size={14} />
                                     </a>
