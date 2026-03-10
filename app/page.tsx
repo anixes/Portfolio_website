@@ -56,7 +56,7 @@ export default function App() {
   `;
 
   return (
-    <div className={`relative w-full h-screen overflow-hidden smooth-transition ${getBgColor()} font-sans`}>
+    <div className={`relative w-full h-[100dvh] overflow-hidden smooth-transition ${getBgColor()} font-sans`}>
       <style>{customStyles}</style>
       <div className={`noise-overlay smooth-transition ${view === 'projects' ? 'opacity-[0.02]' : 'opacity-[0.06]'}`}></div>
 

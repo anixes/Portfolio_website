@@ -117,7 +117,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 
     return (
         <h1
-            className="text-[15vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
+            className="text-[25vw] sm:text-[20vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
         >
             {display.split('').map((char, i) => {
                 const isGlitching = display !== text && display !== lastName;

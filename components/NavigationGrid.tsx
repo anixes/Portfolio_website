@@ -116,7 +116,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* PROJECTS - Large Main Block (Top Left) */}
                 <div
                     onClick={() => setView('projects')}
-                    className={`${activeLayout[0]} min-h-[40vh] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 pb-10 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both' : 'none',
                     }}
@@ -125,11 +125,11 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     <div className="crosshair-tl transition-colors group-hover:border-[#A1A1AA]"></div>
                     <div className="crosshair-br transition-colors group-hover:border-[#A1A1AA]"></div>
 
-                    <div className="absolute top-6 right-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
+                    <div className="absolute top-4 right-4 md:top-6 md:right-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
                         SEC // 01 [PRIMARY]
                     </div>
 
-                    <h2 className="text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 leading-none">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 leading-none">
                         PROJECTS.
                     </h2>
                     <p className="mt-4 text-[10px] font-mono tracking-[0.2em] text-[#52525B] group-hover:text-[#A1A1AA] uppercase">
@@ -140,18 +140,18 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ABOUT - Tall Side Block (Top Middle) */}
                 <div
                     onClick={() => setView('about')}
-                    className={`${activeLayout[1]} min-h-[30vh] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[1]} min-h-[200px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 md:p-10 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both' : 'none',
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
 
-                    <div className="absolute top-6 left-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors -rotate-90 origin-left">
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors -rotate-90 origin-left">
                         SEC // 02
                     </div>
 
-                    <h2 className="text-6xl md:text-7xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 [writing-mode:vertical-rl] md:rotate-180">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 [writing-mode:vertical-rl] md:rotate-180">
                         ABOUT.
                     </h2>
                 </div>
@@ -159,7 +159,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* NOTES - Tall Full Edge Block (Right Edge) */}
                 <div
                     onClick={() => setView('notes')}
-                    className={`${activeLayout[2]} min-h-[30vh] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[2]} min-h-[200px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both' : 'none',
                     }}
@@ -167,7 +167,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
                     <div className="crosshair-tl transition-colors group-hover:border-[#A1A1AA]"></div>
 
-                    <h2 className="text-5xl lg:text-6xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180">
+                    <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl] rotate-0 md:rotate-180">
                         NOTES.
                     </h2>
                     <div className="mt-8 text-[8px] font-mono text-[#52525B] group-hover:text-[#A1A1AA] space-y-2 uppercase tracking-widest hidden md:block">
@@ -176,14 +176,14 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                         <p>Last Sync: Today</p>
                     </div>
 
-                    <div className="absolute bottom-12 right-12 text-[10px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
+                    <div className="absolute bottom-6 right-6 md:bottom-12 md:right-12 text-[8px] md:text-[10px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
                         SEC // 03 [LOGS]
                     </div>
                 </div>
 
                 {/* CONTACT - Wide Bottom Block */}
                 <div
-                    className={`${activeLayout[3]} min-h-[30vh] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-12 group relative overflow-hidden`}
+                    className={`${activeLayout[3]} min-h-[200px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 md:p-12 group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both' : 'none',
                     }}
@@ -191,11 +191,11 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
                     <div className="crosshair-br transition-colors group-hover:border-[#A1A1AA]"></div>
 
-                    <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-8 md:mb-0 text-[#A1A1AA] group-hover:text-white transition-colors relative z-10 uppercase">
+                    <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter mb-8 md:mb-0 text-[#A1A1AA] group-hover:text-white transition-colors relative z-10 uppercase">
                         CONNECT.
                     </h2>
 
-                    <div className="flex flex-col md:flex-row gap-6 md:gap-12 text-[9px] md:text-[10px] font-mono tracking-[0.25em] text-[#71717A] relative z-10 uppercase w-full md:w-auto">
+                    <div className="flex flex-col md:flex-row gap-4 md:gap-12 text-[10px] font-mono tracking-[0.25em] text-[#71717A] relative z-10 uppercase w-full md:w-auto">
                         <a href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2">
                             EMAIL <ArrowUpRight size={14} className="text-[#A1A1AA]" />
                         </a>
