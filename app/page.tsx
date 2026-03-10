@@ -15,7 +15,7 @@ export default function App() {
   useEffect(() => {
     if (view !== 'hero') return;
     if (loadingProgress < 100) {
-      const timer = setTimeout(() => setLoadingProgress(p => Math.min(p + 2, 100)), 25);
+      const timer = setTimeout(() => setLoadingProgress(p => Math.min(p + 5, 100)), 15);
       return () => clearTimeout(timer);
     }
   }, [view, loadingProgress]);
@@ -36,10 +36,10 @@ export default function App() {
   }, [view, loadingProgress, titlePhase]);
 
   const getBgColor = () => {
-    if (view === 'hero') return 'bg-[#0B0C10]';
-    if (view === 'grid' || view === 'about' || view === 'notes') return 'bg-[#0B0C10]';
-    if (view === 'projects') return 'bg-[#12141D]';
-    return 'bg-[#0B0C10]';
+    if (view === 'hero') return 'bg-[#000000]';
+    if (view === 'grid' || view === 'about' || view === 'notes') return 'bg-[#000000]';
+    if (view === 'projects') return 'bg-[#0A0A0A]';
+    return 'bg-[#000000]';
   };
 
   const customStyles = `

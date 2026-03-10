@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useMemo } from 'react';
-import { Environment, Sphere, useTexture } from '@react-three/drei';
+import { Environment, Sphere, useTexture, Lightformer } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -88,16 +88,16 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
     const outerMaterial = useMemo(() => new THREE.MeshPhysicalMaterial({
         color: '#ffffff',
         metalness: 1.0,
-        roughness: 0.05,
+        roughness: 0.08, // Low roughness to keep it 'Silver Surfer' but blur umbrella details
         clearcoat: 1,
         clearcoatRoughness: 0.1,
-        envMapIntensity: 2.5,
+        envMapIntensity: 2.2,
     }), []);
 
     const innerMaterial = useMemo(() => new THREE.MeshStandardMaterial({
         color: '#ffffff',
         metalness: 1.0,
-        roughness: 0.0,
+        roughness: 0.08,
     }), []);
 
     // Generate 20 randomized spheres
@@ -118,8 +118,8 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
             <Environment preset="studio" />
             <ambientLight intensity={0.2} />
 
-            <pointLight ref={cyanLight} color="#45A29E" intensity={150} distance={20} decay={2} />
-            <pointLight ref={purpleLight} color="#7289DA" intensity={150} distance={20} decay={2} />
+            <pointLight ref={cyanLight} color="#FFFFFF" intensity={150} distance={20} decay={2} />
+            <pointLight ref={purpleLight} color="#E0F2FE" intensity={150} distance={20} decay={2} />
 
             {spheresData.map((data, i) => (
                 <FloatingPhysicsSphere

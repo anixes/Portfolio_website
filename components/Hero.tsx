@@ -14,12 +14,12 @@ interface HeroProps {
 
 const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
     const roles = [
-        { text: "MACHINE LEARNING.", color: "text-[#7289DA]", shadow: "rgba(114, 137, 218, 0.6)" },
-        { text: "DATA SCIENCE.", color: "text-[#45A29E]", shadow: "rgba(69, 162, 158, 0.6)" },
-        { text: "ARTIFICIAL INTELLIGENCE.", color: "text-[#66FCF1]", shadow: "rgba(102, 252, 241, 0.6)" },
-        { text: "VIBE CODING.", color: "text-[#D72638]", shadow: "rgba(215, 38, 56, 0.6)" },
-        { text: "BACKEND.", color: "text-[#F49F0A]", shadow: "rgba(244, 159, 10, 0.6)" },
-        { text: "FRONTEND.", color: "text-[#00E5FF]", shadow: "rgba(0, 229, 255, 0.6)" }
+        { text: "MACHINE LEARNING.", color: "text-[#FFFFFF]", shadow: "rgba(255, 255, 255, 0.6)" },
+        { text: "DATA SCIENCE.", color: "text-[#E2E8F0]", shadow: "rgba(226, 232, 240, 0.6)" },
+        { text: "ARTIFICIAL INTELLIGENCE.", color: "text-[#A1A1AA]", shadow: "rgba(161, 161, 170, 0.6)" },
+        { text: "VIBE CODING.", color: "text-[#F8FAFC]", shadow: "rgba(248, 250, 252, 0.6)" },
+        { text: "BACKEND.", color: "text-[#E0F2FE]", shadow: "rgba(224, 242, 254, 0.6)" },
+        { text: "FRONTEND.", color: "text-[#FFFFFF]", shadow: "rgba(255, 255, 255, 0.4)" }
     ];
     const [roleIndex, setRoleIndex] = useState(0);
     const [display, setDisplay] = useState(roles[0].text);
@@ -54,7 +54,7 @@ const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
 
     return (
         <p
-            className={`text-xl md:text-3xl font-mono tracking-widest ${currentRole.color} transition-all duration-300 absolute ${phase === 3 ? 'opacity-100' : 'opacity-0'}`}
+            className={`whitespace-nowrap text-base md:text-4xl font-mono tracking-widest ${currentRole.color} transition-all duration-300 absolute ${phase === 3 ? 'opacity-100' : 'opacity-0'}`}
             style={{
                 textShadow: isGlitching ? `0 0 20px ${currentRole.shadow}, 0 0 40px ${currentRole.shadow}` : 'none',
                 transform: isGlitching ? 'scale(1.05) skewX(-5deg)' : 'scale(1) skewX(0)',
@@ -74,7 +74,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
     useEffect(() => {
         // Random glitch timer loop
         const runGlitch = () => {
-            const isNameSwap = Math.random() > 0.4; // 60% chance of name swap for higher frequency
+            const isNameSwap = Math.random() > 0.2; // 80% chance of name swap for very high frequency
 
             if (isNameSwap) {
                 setDisplay(lastName);
@@ -85,9 +85,9 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 }, 800);
             } else {
                 const arr = (isLastName ? lastName : text).split('');
-                const numGlitches = Math.floor(Math.random() * 2) + 1;
+                const numGlitches = Math.floor(Math.random() * 3) + 2; // Increased glitch count
                 for (let i = 0; i < numGlitches; i++) {
-                    const idx = Math.floor(Math.random() * text.length);
+                    const idx = Math.floor(Math.random() * (isLastName ? lastName : text).length);
                     arr[idx] = chars[Math.floor(Math.random() * chars.length)];
                 }
                 setDisplay(arr.join(''));
@@ -96,8 +96,8 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 }, 60);
             }
 
-            // Queue next glitch (every ~3 seconds)
-            const nextTime = 2500 + Math.random() * 1000;
+            // Queue next glitch (every ~1 second)
+            const nextTime = 800 + Math.random() * 700;
             setTimeout(runGlitch, nextTime);
         };
 
@@ -117,7 +117,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 
     return (
         <h1
-            className="text-[5.5rem] md:text-[9.5rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex gap-1 md:gap-2 group transition-all duration-700 relative z-20"
+            className="text-[15vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
         >
             {display.split('').map((char, i) => {
                 const isGlitching = display !== text && display !== lastName;
@@ -126,11 +126,11 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 return (
                     <span
                         key={i}
-                        className={`inline-block transition-colors duration-300 ease-out py-2 ${isLastNameStr ? 'text-[#45A29E]' : 'text-white group-hover:text-[#66FCF1]'}`}
+                        className={`inline-block transition-colors duration-300 ease-out py-2 ${isLastNameStr ? 'text-white' : 'text-white group-hover:text-[#FFFFFF]'}`}
                         style={{
-                            textShadow: isGlitching || isLastNameStr
-                                ? '0 0 20px rgba(69, 162, 158, 0.8), 0 0 40px rgba(69, 162, 158, 0.4)'
-                                : '0 15px 35px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.3)',
+                            textShadow: isGlitching
+                                ? '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4)'
+                                : isLastNameStr ? 'none' : '0 15px 35px rgba(0,0,0,0.8), 0 0 15px rgba(255,255,255,0.3)',
                             transform: isGlitching ? 'scale(1.1) skewX(-10deg)' : 'scale(1) skewX(0)',
                         }}
                     >
@@ -157,37 +157,37 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
             </div>
 
             {/* Foreground Content */}
-            <div className={`relative z-10 flex flex-col items-center text-center smooth-transition ${titlePhase > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="relative z-10 flex flex-col items-center text-center">
                 {loadingProgress < 100 ? (
-                    <div className="flex flex-col items-center w-64">
-                        <div className="flex justify-between w-full text-xs font-mono text-[#45A29E] mb-2 tracking-widest uppercase">
+                    <div className="flex flex-col items-center w-64 transition-opacity duration-300 opacity-100">
+                        <div className="flex justify-between w-full text-xs font-mono text-[#FFFFFF] mb-2 tracking-widest uppercase">
                             <span>Initialising Systems</span>
                             <span>{loadingProgress}%</span>
                         </div>
-                        <div className="w-full h-[1px] bg-[#1F2833] overflow-hidden">
-                            <div className="h-full bg-[#45A29E] transition-all duration-75" style={{ width: `${loadingProgress}%` }} />
+                        <div className="w-full h-[1px] bg-[#27272A] overflow-hidden">
+                            <div className="h-full bg-[#FFFFFF] transition-all duration-75" style={{ width: `${loadingProgress}%` }} />
                         </div>
                     </div>
                 ) : (
-                    <div>
+                    <div className={`flex flex-col items-center text-center smooth-transition ${titlePhase > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <AnimatedHeroTitle text={portfolioData.personalInfo.name.split(' ')[0].toUpperCase()} view={view} />
-                        <div className="h-12 mt-2 flex items-center justify-center relative">
-                            <p className={`text-xl md:text-3xl font-mono tracking-widest text-[#45A29E] transition-opacity duration-700 absolute ${titlePhase >= 1 && titlePhase < 3 ? 'opacity-100' : 'opacity-0'}`}>
+                        <div className="h-12 mt-4 flex items-center justify-center relative">
+                            <p className={`whitespace-nowrap text-xl md:text-4xl font-mono tracking-widest text-[#FFFFFF] transition-opacity duration-700 absolute ${titlePhase >= 1 && titlePhase < 3 ? 'opacity-100' : 'opacity-0'}`}>
                                 DATA SCIENTIST.
                             </p>
                             <AnimatedRoleTitle phase={titlePhase} />
                         </div>
-                        <p className="mt-20 text-[10px] font-mono text-[#45A29E] animate-pulse tracking-[0.3em] uppercase bg-black/40 px-6 py-3 rounded-full backdrop-blur-md border border-[#45A29E]/30">
-                            Click to access main terminal
+                        <p className="mt-16 md:mt-24 text-[11px] md:text-[13px] font-mono text-[#FFFFFF] animate-pulse tracking-[0.4em] uppercase bg-black/40 px-8 py-4 rounded-full backdrop-blur-md border border-[#FFFFFF]/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all">
+                            [ ACCESS TERMINAL ]
                         </p>
                     </div>
                 )}
             </div>
 
             {/* Footer Credit */}
-            <div className="absolute bottom-10 right-10 text-[9px] font-mono text-[#5C6B73] uppercase tracking-[0.4em] flex items-center gap-4">
-                <div className="w-16 h-[1px] bg-[#1F2833]"></div>
-                AESTHETIC: OBSIDIAN IRIDESCENCE
+            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 text-[7px] md:text-[9px] font-mono text-[#A1A1AA] uppercase tracking-[0.4em] flex items-center gap-4">
+                <div className="hidden md:block w-16 h-[1px] bg-[#27272A]"></div>
+                AESTHETIC: LIQUID CHROME
             </div>
         </div>
     );

@@ -5,9 +5,9 @@ export const portfolioData = {
     role: "Data Scientist & Machine Learning Engineer",
     tagline: "Building intelligent systems and extracting actionable insights from complex data.",
     bio: "I am a Data Scientist and Machine Learning Engineer focused on building scalable, data-driven solutions. With a strong foundation in Python, SQL, and MLOps, I specialize in translating complex datasets into actionable insights. I am currently developing a portfolio of end-to-end machine learning applications, including a real estate price prediction and recommendation engine.",
-    email: "animesh@anixes.in",
-    github: "https://github.com/animeshdwivedi",
-    linkedin: "https://linkedin.com/in/animeshdwivedi",
+    email: "animeshdwivedi577@gmail.com",
+    github: "https://github.com/anixes",
+    linkedin: "https://www.linkedin.com/in/anixes",
     twitter: "https://twitter.com/animeshdwivedi",
   },
   hero: {
@@ -24,17 +24,17 @@ export const portfolioData = {
   },
   projects: [
     {
-      id: "gurgaon-real-estate",
-      title: "Gurgaon Real Estate Price Prediction & Recommendation Engine",
-      description: "An end-to-end machine learning pipeline that predicts real estate prices in Gurgaon based on various property features and recommends similar properties to users.",
-      longDescription: "This project implements a full MLOps lifecycle, from data scraping and cleaning to model deployment using FastAPI and Docker. It features a custom recommendation engine that uses collaborative filtering and content-based approaches to suggest properties to users.",
-      techStack: ["Python", "Scikit-Learn", "FastAPI", "PostgreSQL", "Docker", "AWS"],
+      id: "ncr-property-price-estimator",
+      title: "NCR Property Price Estimator",
+      description: "A complete end-to-end Machine Learning web application for predicting real estate prices in the National Capital Region (Delhi-NCR) of India.",
+      longDescription: "This comprehensive MLOps project features a decoupled architecture with a scikit-learn modeling pipeline (using custom Log/Winsorizer/Geo-Median transformers), a high-performance FastAPI backend for model serving with Pydantic validation, and a polished Streamlit frontend. The lifecycle includes DVC for data/model versioning, GitHub Actions for CI/CD, and Docker orchestration for seamless deployment. Future versions will incorporate a property recommender system and enhanced real-time data scraping.",
+      techStack: ["Scikit-learn", "FastAPI", "Streamlit", "Docker", "DVC", "MLflow", "GitHub Actions", "XGBoost", "Pytest"],
       year: "2026",
       links: {
-        github: "https://github.com/animeshdwivedi/gurgaon-real-estate",
+        github: "https://github.com/anixes/ncr_property_price_estimation",
         live: "#",
       },
-      image: "https://picsum.photos/seed/realestate/800/600",
+      image: "/projects/ncr_property_price.png",
       featured: true,
     },
     {
