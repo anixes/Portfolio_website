@@ -121,7 +121,7 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                                 <img
                                     src={project.image}
                                     alt={project.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-70 md:opacity-40 group-hover/image:opacity-90 transition-opacity duration-700"
+                                    className="absolute inset-0 w-full h-full object-cover opacity-100 md:opacity-40 group-hover/image:opacity-80 transition-opacity duration-700"
                                 />
                             )}
                             <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
