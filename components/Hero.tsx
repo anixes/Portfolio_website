@@ -117,7 +117,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 
     return (
         <h1
-            className="text-[19vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
+            className="text-[21vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
         >
             {display.split('').map((char, i) => {
                 const isGlitching = display !== text && display !== lastName;
@@ -126,7 +126,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 return (
                     <span
                         key={i}
-                        className={`inline-block transition-colors duration-300 ease-out py-2 ${isLastNameStr ? 'text-white' : 'text-white group-hover:text-[#FFFFFF]'}`}
+                        className={`inline-block transition-colors duration-300 ease-out py-2 [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:0px] ${isLastNameStr ? 'text-white' : 'text-white group-hover:text-[#FFFFFF]'}`}
                         style={{
                             textShadow: isGlitching
                                 ? '0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.4)'

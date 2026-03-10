@@ -69,12 +69,12 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
             <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-3 min-h-[100dvh] md:h-full w-full gap-[2px] bg-[#27272A] p-[2px] pb-24 md:pb-[2px]">
                 <style>{`
                   @keyframes cyber-glitch {
-                    0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); filter: brightness(2) hue-rotate(90deg); }
-                    20% { opacity: 1; clip-path: inset(0 0 80% 0); transform: translateY(-10px) skewX(10deg); filter: hue-rotate(90deg); }
-                    40% { opacity: 0.5; clip-path: inset(40% 0 20% 0); transform: translateY(5px) skewX(-10deg); filter: hue-rotate(-90deg); }
+                    0% { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); }
+                    20% { opacity: 1; clip-path: inset(0 0 80% 0); transform: translateY(-10px) skewX(10deg); }
+                    40% { opacity: 0.5; clip-path: inset(40% 0 20% 0); transform: translateY(5px) skewX(-10deg); }
                     60% { opacity: 1; clip-path: inset(10% 0 60% 0); transform: translateY(0) skewX(5deg); }
                     80% { opacity: 0.8; clip-path: inset(0 0 0 0); transform: translate(2px, -2px) scale(1.02); }
-                    100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translate(0, 0) scale(1); filter: brightness(1) hue-rotate(0deg); }
+                    100% { opacity: 1; clip-path: inset(0 0 0 0); transform: translate(0, 0) scale(1); }
                   }
                   @keyframes center-glitch {
                     0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); filter: blur(10px) invert(1); }
