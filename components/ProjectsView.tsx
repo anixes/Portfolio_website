@@ -60,14 +60,14 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
           ${view === 'projects' ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}
             >
                 <div>
-                    <button onClick={() => setView('grid')} className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] mb-16 text-[#FFFFFF] hover:text-white transition-colors">
+                    <button onClick={() => setView('grid')} className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] mb-8 md:mb-16 text-[#FFFFFF] hover:text-white transition-colors min-h-[44px] min-w-[44px]">
                         <ArrowLeft size={14} /> Back to Terminal
                     </button>
-                    <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-6 text-white">INDEX_</h1>
-                    <p className="text-[#FFFFFF]/40 text-xs font-mono leading-relaxed mb-16 w-full md:max-w-[250px] uppercase tracking-wider">
+                    <h1 className="text-3xl md:text-6xl font-black tracking-tighter mb-4 md:mb-6 text-white">INDEX_</h1>
+                    <p className="hidden md:block text-[#FFFFFF]/40 text-xs font-mono leading-relaxed mb-16 w-full md:max-w-[250px] uppercase tracking-wider">
                         Exploration of neural architectures, algorithmic datasets, and predictive modeling protocols.
                     </p>
-                    <div className="mb-12 w-full">
+                    <div className="hidden md:block mb-12 w-full">
                         <h3 className="text-[10px] font-black text-[#A1A1AA] uppercase tracking-[0.3em] mb-5">By Protocol:</h3>
                         <ul className="space-y-4 font-mono text-[10px] text-[#FFFFFF] w-full">
                             {['00 Python', '01 SQL', '02 Next.js', '03 TensorFlow', '04 Scikit-Learn'].map((tech, i) => (
@@ -81,7 +81,7 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                 </div>
                 <div className="hidden md:block">
                     <div className="h-[1px] w-full bg-[#27272A] mb-6"></div>
-                    <p className="text-[9px] font-mono text-[#A1A1AA] uppercase tracking-[0.4em]">© 10-03-2026 {portfolioData.personalInfo.name.toUpperCase()}</p>
+                    <p className="text-[9px] font-mono text-[#A1A1AA] uppercase tracking-[0.4em]">© {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')} {portfolioData.personalInfo.name.toUpperCase()}</p>
                 </div>
             </div>
 
@@ -96,7 +96,7 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                 </h2>
 
                 {portfolioData.projects.map((project, idx) => (
-                    <div key={project.id} className="mb-32 md:mb-48 group">
+                    <div key={project.id} className="mb-20 sm:mb-32 md:mb-48 group">
                         <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-8 border-l-2 border-[#27272A] pl-6 group-hover:border-[#FFFFFF] transition-colors">
                             <div className="flex flex-col gap-2 w-full">
                                 <span className="font-mono text-[10px] text-[#A1A1AA] tracking-widest uppercase mb-1 w-full text-left">PROT_VER: {project.year}</span>
@@ -132,14 +132,14 @@ export default function ProjectsView({ view, setView }: ProjectsViewProps) {
                                     <a
                                         href={project.links.live}
                                         target="_blank" rel="noopener noreferrer"
-                                        className="px-4 py-3 sm:px-8 bg-[#FFFFFF] text-[#0B0C10] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all w-full sm:w-auto"
+                                        className="px-4 py-3 sm:px-8 bg-[#FFFFFF] text-[#0B0C10] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all w-full sm:w-auto min-h-[44px]"
                                     >
                                         LIVE_SIM <ArrowUpRight size={14} />
                                     </a>
                                     <a
                                         href={project.links.github}
                                         target="_blank" rel="noopener noreferrer"
-                                        className="px-4 py-3 sm:px-8 bg-transparent text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-[#FFFFFF] hover:text-[#FFFFFF] transition-all w-full sm:w-auto"
+                                        className="px-4 py-3 sm:px-8 bg-transparent text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-[#FFFFFF] hover:text-[#FFFFFF] transition-all w-full sm:w-auto min-h-[44px]"
                                     >
                                         ACCESS_SRC <Github size={14} />
                                     </a>

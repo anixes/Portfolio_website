@@ -1,20 +1,22 @@
 'use client';
 
-import React, { useRef, useMemo } from 'react';
+import React, { useRef, useMemo, MutableRefObject } from 'react';
 import { Environment, Sphere, useTexture, Lightformer } from '@react-three/drei';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
 export interface FloatingSpheresProps {
     color?: string;
+    shakeIntensity?: MutableRefObject<number>;
 }
 
-const FloatingPhysicsSphere = ({ position, size, outerMaterial, innerMaterial, speed = 1 }: {
+const FloatingPhysicsSphere = ({ position, size, outerMaterial, innerMaterial, speed = 1, shakeIntensity }: {
     position: [number, number, number],
     size: [number, number, number],
     outerMaterial: THREE.Material,
     innerMaterial: THREE.Material,
-    speed?: number
+    speed?: number,
+    shakeIntensity?: MutableRefObject<number>,
 }) => {
     const meshRef = useRef<THREE.Group>(null!);
     const initialPos = useMemo(() => new THREE.Vector3(...position), [position]);
@@ -46,6 +48,16 @@ const FloatingPhysicsSphere = ({ position, size, outerMaterial, innerMaterial, s
             velocity.addScaledVector(repelDir, force * repulsionStrength);
         }
 
+        // Phone shake — apply random impulse burst
+        if (shakeIntensity && shakeIntensity.current > 0.05) {
+            const shake = shakeIntensity.current;
+            velocity.add(new THREE.Vector3(
+                (Math.random() - 0.5) * shake * 2,
+                (Math.random() - 0.5) * shake * 2,
+                (Math.random() - 0.5) * shake * 0.5,
+            ));
+        }
+
         const springForce = new THREE.Vector3().subVectors(targetPos, meshRef.current.position).multiplyScalar(0.08);
         velocity.add(springForce);
         velocity.multiplyScalar(0.92);
@@ -65,7 +77,7 @@ const FloatingPhysicsSphere = ({ position, size, outerMaterial, innerMaterial, s
     );
 };
 
-export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresProps) {
+export default function FloatingSpheres({ color = '#ffffff', shakeIntensity }: FloatingSpheresProps) {
     const cyanLight = useRef<THREE.PointLight>(null!);
     const purpleLight = useRef<THREE.PointLight>(null!);
 
@@ -88,7 +100,7 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
     const outerMaterial = useMemo(() => new THREE.MeshPhysicalMaterial({
         color: '#ffffff',
         metalness: 1.0,
-        roughness: 0.08, // Low roughness to keep it 'Silver Surfer' but blur umbrella details
+        roughness: 0.08,
         clearcoat: 1,
         clearcoatRoughness: 0.1,
         envMapIntensity: 2.2,
@@ -100,7 +112,7 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
         roughness: 0.08,
     }), []);
 
-    // Generate 20 randomized spheres
+    // Generate 22 randomized spheres
     const spheresData = useMemo(() => {
         return Array.from({ length: 22 }).map((_, i) => ({
             pos: [
@@ -129,6 +141,7 @@ export default function FloatingSpheres({ color = '#ffffff' }: FloatingSpheresPr
                     outerMaterial={outerMaterial}
                     innerMaterial={innerMaterial}
                     speed={data.speed}
+                    shakeIntensity={shakeIntensity}
                 />
             ))}
         </>

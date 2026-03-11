@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import FloatingSpheres from './FloatingSpheres';
 import { portfolioData } from '@/lib/data';
+import { useShakeDetection } from '@/hooks/useShakeDetection';
 
 interface HeroProps {
     view: string;
@@ -33,7 +34,7 @@ const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
             const nextRole = roles[nextIndex].text;
 
             setIsGlitching(true);
-            // Glitch effect before changing
+
             const glitchText = nextRole.split('').map(char =>
                 Math.random() > 0.6 && char !== ' ' ? chars[Math.floor(Math.random() * chars.length)] : char
             ).join('');
@@ -72,9 +73,8 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
     const lastName = 'DWIVEDI';
 
     useEffect(() => {
-        // Random glitch timer loop
         const runGlitch = () => {
-            const isNameSwap = Math.random() > 0.2; // 80% chance of name swap for very high frequency
+            const isNameSwap = Math.random() > 0.2;
 
             if (isNameSwap) {
                 setDisplay(lastName);
@@ -85,7 +85,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 }, 800);
             } else {
                 const arr = (isLastName ? lastName : text).split('');
-                const numGlitches = Math.floor(Math.random() * 3) + 2; // Increased glitch count
+                const numGlitches = Math.floor(Math.random() * 3) + 2;
                 for (let i = 0; i < numGlitches; i++) {
                     const idx = Math.floor(Math.random() * (isLastName ? lastName : text).length);
                     arr[idx] = chars[Math.floor(Math.random() * chars.length)];
@@ -96,16 +96,14 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
                 }, 60);
             }
 
-            // Queue next glitch (every ~1 second)
             const nextTime = 800 + Math.random() * 700;
             setTimeout(runGlitch, nextTime);
         };
 
         const initialTimeout = setTimeout(runGlitch, 1000);
         return () => clearTimeout(initialTimeout);
-    }, [text]); // Removed isLastName from deps to prevent infinite loops, using text as anchor
+    }, [text]);
 
-    // Trigger glitch on view change
     useEffect(() => {
         setDisplay(lastName);
         setIsLastName(true);
@@ -143,6 +141,8 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 };
 
 export default function Hero({ view, loadingProgress, titlePhase, onEnter }: HeroProps) {
+    const shakeIntensity = useShakeDetection();
+
     return (
         <div
             className={`absolute inset-0 flex flex-col items-center justify-center cursor-pointer smooth-transition origin-center
@@ -152,7 +152,7 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
             {/* Soft 3D Background */}
             <div className="absolute inset-0 flex items-center justify-center opacity-90">
                 <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-                    <FloatingSpheres />
+                    <FloatingSpheres shakeIntensity={shakeIntensity} />
                 </Canvas>
             </div>
 
@@ -177,9 +177,11 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
                             </p>
                             <AnimatedRoleTitle phase={titlePhase} />
                         </div>
-                        <p className="mt-16 md:mt-24 text-[11px] md:text-[13px] font-mono text-[#FFFFFF] animate-pulse tracking-[0.4em] uppercase bg-black/40 px-8 py-4 rounded-full backdrop-blur-md border border-[#FFFFFF]/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all">
-                            [ ACCESS TERMINAL ]
-                        </p>
+                        <div className="mt-16 md:mt-24">
+                            <p className="text-[11px] md:text-[13px] font-mono text-[#FFFFFF] animate-pulse tracking-[0.4em] uppercase bg-black/40 px-8 py-4 rounded-full backdrop-blur-md border border-[#FFFFFF]/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all">
+                                [ ACCESS TERMINAL ]
+                            </p>
+                        </div>
                     </div>
                 )}
             </div>

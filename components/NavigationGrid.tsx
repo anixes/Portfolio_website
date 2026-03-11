@@ -90,7 +90,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ANIXES.IN Main Tile (Mobile Only) */}
                 <div
                     onClick={() => setView('hero')}
-                    className={`col-span-2 order-1 md:hidden min-h-[130px] sm:min-h-[180px] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-hidden`}
+                    className={`col-span-2 order-1 md:hidden min-h-[140px] sm:min-h-[180px] bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex flex-col items-center justify-center p-6 cursor-pointer group relative overflow-clip active:bg-[#0A0A0A]`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.05s both' : 'none',
                     }}
@@ -112,7 +112,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* PROJECTS - Large Main Block (Top Left) */}
                 <div
                     onClick={() => setView('projects')}
-                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 pb-10 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] active:bg-[#0A0A0A] transition-colors duration-500 flex p-8 pt-16 pb-10 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both' : 'none',
                     }}
@@ -136,14 +136,14 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* ABOUT - Tall Side Block (Top Middle) */}
                 <div
                     onClick={() => setView('about')}
-                    className={`${activeLayout[1]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[1]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] active:bg-[#0A0A0A] transition-colors duration-500 flex p-6 md:p-10 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both' : 'none',
                     }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
 
-                    <div className="absolute top-4 left-4 md:top-6 md:left-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors -rotate-90 origin-left">
+                    <div className="absolute top-4 left-4 md:top-6 md:left-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors [writing-mode:vertical-rl]">
                         SEC // 02
                     </div>
 
@@ -155,7 +155,7 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* NOTES - Tall Full Edge Block (Right Edge) */}
                 <div
                     onClick={() => setView('notes')}
-                    className={`${activeLayout[2]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] transition-colors duration-500 flex p-6 pt-12 md:p-12 cursor-pointer group relative overflow-hidden`}
+                    className={`${activeLayout[2]} min-h-[180px] sm:min-h-[250px] md:min-h-0 bg-[#000000] hover:bg-[#0A0A0A] active:bg-[#0A0A0A] transition-colors duration-500 flex p-6 pt-12 md:p-12 cursor-pointer group relative overflow-hidden`}
                     style={{
                         animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both' : 'none',
                     }}
@@ -192,13 +192,13 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                     </h2>
 
                     <div className="flex flex-col md:flex-row gap-4 md:gap-12 text-[10px] font-mono tracking-[0.25em] text-[#71717A] relative z-10 uppercase w-full md:w-auto">
-                        <a href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2">
+                        <a href={`mailto:${portfolioData.personalInfo.email}`} className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2 min-h-[44px] py-2">
                             EMAIL <ArrowUpRight size={14} className="text-[#A1A1AA]" />
                         </a>
-                        <a href={portfolioData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2">
+                        <a href={portfolioData.personalInfo.github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2 min-h-[44px] py-2">
                             GITHUB <ArrowUpRight size={14} className="text-[#A1A1AA]" />
                         </a>
-                        <a href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2">
+                        <a href={portfolioData.personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#FFFFFF] transition-colors border-b border-[#27272A] hover:border-[#FFFFFF] pb-2 min-h-[44px] py-2">
                             LINKEDIN <ArrowUpRight size={14} className="text-[#A1A1AA]" />
                         </a>
                     </div>

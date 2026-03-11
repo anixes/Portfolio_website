@@ -6,11 +6,16 @@ import NavigationGrid from '@/components/NavigationGrid';
 import ProjectsView from '@/components/ProjectsView';
 import AboutView from '@/components/AboutView';
 import NotesView from '@/components/NotesView';
+import StatusBar from '@/components/StatusBar';
+import { useKeyboardNav } from '@/hooks/useKeyboardNav';
 
 export default function App() {
   const [view, setView] = useState('hero'); // 'hero', 'grid', 'projects', 'about', 'notes'
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [titlePhase, setTitlePhase] = useState(0);
+
+  // Keyboard navigation
+  useKeyboardNav(view, setView);
 
   useEffect(() => {
     if (view !== 'hero') return;
@@ -74,6 +79,8 @@ export default function App() {
       <AboutView view={view} setView={setView} />
 
       <NotesView view={view} setView={setView} />
+
+      <StatusBar view={view} />
     </div>
   );
 }
