@@ -30,9 +30,14 @@ export default function AboutView({ view, setView }: AboutViewProps) {
                         About. <span className="text-[10px] font-mono text-[#A1A1AA] tracking-[0.4em] animate-pulse">[[ ID_VERIFIED ]]</span>
                     </h1>
                     <div className="space-y-4 md:space-y-6 text-base md:text-lg text-[#C5C6C7]/80 leading-relaxed font-light uppercase tracking-wide">
-                        <p>{portfolioData.personalInfo.bio.split('.')[0]}.</p>
-                        <p>With a strong foundation in <span className="text-white font-black border-b border-[#FFFFFF]">PYTHON, SQL, AND MLOPS</span>, I specialize in translating complex datasets into actionable insights and deploying production-ready models.</p>
-                        <p className="border-t border-[#27272A]/30 pt-6">I am currently developing a portfolio of end-to-end machine learning applications, including a real estate price prediction and recommendation engine, while continuously refining my algorithmic problem-solving skills to build highly optimized systems.</p>
+                        {Array.isArray(portfolioData.personalInfo.bio) ? 
+                            portfolioData.personalInfo.bio.map((paragraph, index) => (
+                                <p key={index} className={index > 0 ? "border-t border-[#27272A]/30 pt-6" : ""}>
+                                    {paragraph}
+                                </p>
+                            )) : 
+                            <p>{portfolioData.personalInfo.bio}</p>
+                        }
                     </div>
                 </div>
             </div>

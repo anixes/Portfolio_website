@@ -4,7 +4,12 @@ export const portfolioData = {
     domain: "anixes.in",
     role: "Data Scientist & Machine Learning Engineer",
     tagline: "Building intelligent systems and extracting actionable insights from complex data.",
-    bio: "I am a Data Scientist and Machine Learning Engineer focused on building scalable, data-driven solutions. With a strong foundation in Python, SQL, and MLOps, I specialize in translating complex datasets into actionable insights. I am currently developing a portfolio of end-to-end machine learning applications, including a real estate price prediction and recommendation engine.",
+    bio: [
+      "I’m Animesh Dwivedi, a data science student focused on building practical machine learning systems rather than isolated notebook experiments. My work centers on understanding problems end-to-end — from data exploration and feature engineering to model evaluation and deployment considerations.",
+      "Most of my recent projects explore how machine learning models behave in real environments. I spend time experimenting with validation strategies, comparing model families such as gradient boosting methods, and tracking experiments using tools like MLflow. I’m particularly interested in building pipelines that are reproducible, observable, and deployable.",
+      "Alongside machine learning, I’ve been learning the infrastructure side of applied ML — containerization with Docker, serving models through APIs, and deploying systems to cloud environments. This has pushed me toward an MLOps-oriented mindset where models are treated as production systems rather than research artifacts.",
+      "I document what I learn through projects and technical notes, both to refine my thinking and to share the lessons that come from building things end to end. Currently, I’m continuing to deepen my understanding of model development, system design, and deployment workflows while building projects that move closer to real-world machine learning applications."
+    ],
     email: "animeshdwivedi577@gmail.com",
     github: "https://github.com/anixes",
     linkedin: "https://www.linkedin.com/in/anixes",
