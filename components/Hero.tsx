@@ -173,9 +173,6 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
                     <div className={`flex flex-col items-center text-center smooth-transition ${titlePhase > 0 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
                         <AnimatedHeroTitle text={portfolioData.personalInfo.name.split(' ')[0].toUpperCase()} view={view} />
                         <div className="h-12 mt-4 flex items-center justify-center relative">
-                            <p className={`whitespace-nowrap text-xl md:text-4xl font-mono tracking-widest text-[#FFFFFF] transition-opacity duration-700 absolute ${titlePhase >= 1 && titlePhase < 3 ? 'opacity-100' : 'opacity-0'}`}>
-                                DATA SCIENTIST.
-                            </p>
                             <AnimatedRoleTitle phase={titlePhase} />
                         </div>
                         <div className="mt-16 md:mt-24">

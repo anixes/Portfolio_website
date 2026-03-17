@@ -37,7 +37,7 @@ export const portfolioData = {
       year: "2026",
       links: {
         github: "https://github.com/anixes/ncr_property_price_estimation",
-        live: "#",
+        live: "http://13.204.212.148:8501/",
       },
       image: "/projects/ncr_property_price.png",
       featured: true,
@@ -51,7 +51,7 @@ export const portfolioData = {
       year: "2026",
       links: {
         github: "https://github.com/anixes/ecommerce_delay_prediction",
-        live: "#",
+        live: "http://13.204.212.148:8502/",
       },
       image: "/projects/ecommerce_delay_prediction_hero.png",
       featured: true,
