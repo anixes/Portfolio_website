@@ -43,6 +43,20 @@ export const portfolioData = {
       featured: true,
     },
     {
+      id: "ecommerce-delay-prediction",
+      title: "Ecommerce Delivery Delay Prediction",
+      description: "A complete end-to-end Machine Learning system for predicting delivery delays in the Olist Brazilian E-Commerce marketplace.",
+      longDescription: "This project demonstrates a full-lifecycle 'Push-to-Deploy' pipeline, integrating advanced machine learning with CatBoost and Optuna tuning, data engineering with DVC and DAGsHub, and automated cloud infrastructure. It features a high-performance FastAPI backend and an interactive Streamlit dashboard for real-time risk assessment, all orchestrated with Docker and CI/CD via GitHub Actions.",
+      techStack: ["CatBoost", "Optuna", "FastAPI", "Streamlit", "Docker", "DVC", "MLflow", "GitHub Actions", "Pytest"],
+      year: "2026",
+      links: {
+        github: "https://github.com/anixes/ecommerce_delay_prediction",
+        live: "#",
+      },
+      image: "/projects/ecommerce_delay_prediction_hero.png",
+      featured: true,
+    },
+    {
       id: "customer-churn-prediction",
       title: "Customer Churn Prediction & Retention Strategy",
       description: "A predictive model designed to identify at-risk customers in a subscription-based business, providing actionable insights to improve retention rates.",
