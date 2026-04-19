@@ -55,7 +55,7 @@ const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
 
     return (
         <p
-            className={`whitespace-nowrap text-base md:text-4xl font-mono tracking-widest ${currentRole.color} transition-all duration-300 absolute ${phase === 3 ? 'opacity-100' : 'opacity-0'}`}
+            className={`whitespace-nowrap text-[11px] sm:text-sm md:text-4xl font-mono tracking-widest ${currentRole.color} transition-all duration-300 absolute ${phase === 3 ? 'opacity-100' : 'opacity-0'}`}
             style={{
                 textShadow: isGlitching ? `0 0 20px ${currentRole.shadow}, 0 0 40px ${currentRole.shadow}` : 'none',
                 transform: isGlitching ? 'scale(1.05) skewX(-5deg)' : 'scale(1) skewX(0)',
@@ -115,7 +115,7 @@ const AnimatedHeroTitle = ({ text, view }: { text: string, view: string }) => {
 
     return (
         <h1
-            className="text-[21vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20"
+            className="text-[17vw] sm:text-[19vw] md:text-[13rem] leading-none font-black tracking-tighter select-none cursor-crosshair flex justify-center gap-0.5 md:gap-2 group transition-all duration-700 relative z-20 max-w-[100vw]"
             style={{ fontFamily: 'var(--font-geist), system-ui, sans-serif', fontWeight: 900 }}
         >
             {display.split('').map((char, i) => {
@@ -175,7 +175,7 @@ export default function Hero({ view, loadingProgress, titlePhase, onEnter }: Her
                         <div className="h-12 mt-4 flex items-center justify-center relative">
                             <AnimatedRoleTitle phase={titlePhase} />
                         </div>
-                        <div className="mt-16 md:mt-24">
+                        <div className="mt-10 md:mt-24">
                             <p className="text-[11px] md:text-[13px] font-mono text-[#FFFFFF] animate-pulse tracking-[0.4em] uppercase bg-black/40 px-8 py-4 rounded-full backdrop-blur-md border border-[#FFFFFF]/30 shadow-[0_0_20px_rgba(255,255,255,0.1)] hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all">
                                 [ ACCESS TERMINAL ]
                             </p>

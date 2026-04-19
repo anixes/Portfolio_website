@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ArrowUpRight, Github } from 'lucide-react';
 import { portfolioData } from '@/lib/data';
+import GlassCard from '@/components/ui/GlassCard';
+import ViewTransition from '@/components/ui/ViewTransition';
 
 interface ProjectsViewProps {
     view: string;
@@ -41,7 +43,7 @@ const DecipherTitle = ({ text }: { text: string }) => {
         <h3
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="text-2xl md:text-4xl font-black tracking-tighter text-white group-hover:text-[#FFFFFF] transition-colors cursor-default font-mono"
+            className="text-2xl md:text-4xl font-black tracking-tighter text-white group-hover:text-[#FFFFFF] transition-colors cursor-default font-mono drop-shadow-[0_0_10px_rgba(255,255,255,0.2)]"
         >
             {display}
         </h3>
@@ -50,110 +52,110 @@ const DecipherTitle = ({ text }: { text: string }) => {
 
 export default function ProjectsView({ view, setView }: ProjectsViewProps) {
     return (
-        <div
-            className={`absolute inset-0 flex flex-col md:flex-row text-[#C5C6C7] smooth-transition overflow-y-auto md:overflow-hidden
-        ${view === 'projects' ? 'opacity-100 z-20 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'}`}
-        >
-            {/* Left Sidebar Index */}
-            <div
-                className={`w-full shrink-0 md:w-[30%] h-auto md:h-screen md:fixed left-0 border-b md:border-b-0 md:border-r border-[#27272A] bg-[#000000] p-6 pt-12 md:p-16 overflow-visible md:overflow-y-auto hide-scrollbar z-10 flex flex-col justify-between smooth-transition delay-100
-          ${view === 'projects' ? 'translate-x-0 opacity-100' : '-translate-x-16 opacity-0'}`}
-            >
-                <div>
-                    <button onClick={() => setView('grid')} className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] mb-8 md:mb-16 text-[#FFFFFF] hover:text-white transition-colors min-h-[44px] min-w-[44px]">
-                        <ArrowLeft size={14} /> Back to Terminal
-                    </button>
-                    <h1 className="text-3xl md:text-6xl font-black tracking-tighter mb-4 md:mb-6 text-white">INDEX_</h1>
-                    <p className="hidden md:block text-[#FFFFFF]/40 text-xs font-mono leading-relaxed mb-16 w-full md:max-w-[250px] uppercase tracking-wider">
-                        Exploration of neural architectures, algorithmic datasets, and predictive modeling protocols.
-                    </p>
-                    <div className="hidden md:block mb-12 w-full">
-                        <h3 className="text-[10px] font-black text-[#A1A1AA] uppercase tracking-[0.3em] mb-5">By Protocol:</h3>
-                        <ul className="space-y-4 font-mono text-[10px] text-[#FFFFFF] w-full">
-                            {['00 Python', '01 SQL', '02 Next.js', '03 TensorFlow', '04 Scikit-Learn'].map((tech, i) => (
-                                <li key={i} className="flex hover:text-white cursor-pointer transition-colors group">
-                                    <span className="w-10 text-[#A1A1AA] group-hover:text-[#FFFFFF]">/{tech.split(' ')[0]}</span>
-                                    <span className="tracking-widest uppercase">{tech.split(' ')[1]}</span>
-                                </li>
-                            ))}
-                        </ul>
+        <ViewTransition isVisible={view === 'projects'} direction="up" className="z-20 flex justify-center">
+            <div className="w-full h-[100dvh] overflow-y-auto overflow-x-hidden relative bg-[#000000]">
+                {/* Fixed Background Texture */}
+                <div className="absolute inset-0 bg-[#000000] pointer-events-none z-[-1]"></div>
+                
+                {/* Back Button Pill */}
+                <button 
+                    onClick={() => setView('grid')}
+                    className="fixed top-6 left-6 md:top-10 md:left-10 z-50 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-white transition-all bg-[#0A0A0A]/80 border border-[#27272A] hover:border-white px-5 min-h-[48px] rounded-full backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                >
+                    <ArrowLeft size={14} /> <span className="hidden sm:inline">Back to Terminal</span>
+                </button>
+
+                <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 md:mb-24 gap-6">
+                        <div>
+                            <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-4 text-white drop-shadow-2xl">SELECTED_WORKS.</h1>
+                            <p className="text-[#A1A1AA] text-xs font-mono tracking-widest uppercase max-w-xl">
+                                Exploration of neural architectures, algorithmic datasets, and predictive modeling protocols.
+                            </p>
+                        </div>
+                        <div className="animate-pulse text-left md:text-right">
+                            <span className="inline-block text-[10px] font-mono text-[#FFFFFF] tracking-[0.4em] px-4 py-2 border border-[#27272A] rounded-full bg-black/40">
+                                RUNNING_STABLE
+                            </span>
+                        </div>
                     </div>
-                </div>
-                <div className="hidden md:block">
-                    <div className="h-[1px] w-full bg-[#27272A] mb-6"></div>
-                    <p className="text-[9px] font-mono text-[#A1A1AA] uppercase tracking-[0.4em]">© {new Date().toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' }).replace(/\//g, '-')} {portfolioData.personalInfo.name.toUpperCase()}</p>
-                </div>
-            </div>
 
-            {/* Right Scrollable Content */}
-            <div
-                className={`w-full shrink-0 md:w-[70%] md:ml-[30%] h-auto md:h-screen overflow-visible md:overflow-y-auto p-6 py-12 md:p-24 smooth-transition delay-150 bg-[#0A0A0A]
-          ${view === 'projects' ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'}`}
-            >
-                <h2 className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-[0.4em] mb-12 md:mb-16 border-b border-[#27272A] pb-4 flex flex-col md:flex-row md:justify-between items-start md:items-center gap-2 text-left w-full">
-                    <span>SELECTED_WORKS</span>
-                    <span className="animate-pulse text-left w-full md:text-right md:w-auto">RUNNING_STABLE</span>
-                </h2>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 pb-32">
+                        {portfolioData.projects.map((project, idx) => (
+                            <GlassCard 
+                                key={project.id}
+                                hover3D={true}
+                                delay={idx * 0.1}
+                                className={`group overflow-hidden rounded-2xl flex flex-col justify-between ${idx === 0 ? 'lg:col-span-2 aspect-auto min-h-[380px] lg:min-h-[600px]' : 'aspect-auto min-h-[400px] md:min-h-[500px]'}`}
+                            >
+                                {/* Static background map texture to add grain */}
+                                <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none mix-blend-overlay"></div>
+                                
+                                {/* Image layer */}
+                                {project.image && (
+                                    <div className="absolute inset-0 z-0 overflow-hidden">
+                                        <img
+                                            src={project.image}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover opacity-50 group-hover:opacity-60 transition-transform duration-1000 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/80 to-transparent"></div>
+                                        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0A0A0A]/60 to-transparent"></div>
+                                    </div>
+                                )}
 
-                {portfolioData.projects.map((project, idx) => (
-                    <div key={project.id} className="mb-20 sm:mb-32 md:mb-48 group">
-                        <div className="flex flex-col md:flex-row md:items-baseline justify-between mb-8 border-l-2 border-[#27272A] pl-6 group-hover:border-[#FFFFFF] transition-colors">
-                            <div className="flex flex-col gap-2 w-full">
-                                <span className="font-mono text-[10px] text-[#A1A1AA] tracking-widest uppercase mb-1 w-full text-left">PROT_VER: {project.year}</span>
-                                <DecipherTitle text={project.title.toUpperCase()} />
-                            </div>
-                        </div>
+                                {/* Card Content */}
+                                <div className="relative z-10 flex flex-col h-full justify-between p-6 md:p-10">
+                                    <div className="flex justify-between items-start pt-2">
+                                        <span className="font-mono text-[9px] text-[#A1A1AA] tracking-widest uppercase bg-black/60 px-3 py-1.5 rounded-full border border-[#27272A] backdrop-blur-md shadow-lg">PROT_VER: {project.year}</span>
+                                        <span className="font-mono text-[9px] text-[#FFFFFF] tracking-[0.3em] uppercase bg-white/10 px-3 py-1.5 rounded-full backdrop-blur-md">0{idx + 1}</span>
+                                    </div>
 
-                        <p className="text-base text-[#C5C6C7]/80 font-light leading-relaxed mb-6 md:mb-10 max-w-3xl border-b border-[#27272A]/30 pb-10">
-                            {project.description}
-                        </p>
+                                    <div className="mt-20 md:mt-40">
+                                        <div className="mb-4">
+                                            <DecipherTitle text={project.title.toUpperCase()} />
+                                        </div>
+                                        
+                                        <p className="text-sm md:text-base text-[#C5C6C7] font-light leading-relaxed mb-6 md:mb-8 max-w-2xl line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
+                                            {project.description}
+                                        </p>
 
-                        <div className="flex flex-wrap gap-2 md:gap-4 mb-8 md:mb-12 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
-                            {project.techStack.map(tech => (
-                                <span key={tech} className="bg-[#000000] text-[#FFFFFF] px-3 py-1.5 md:px-4 md:py-2 rounded-none border border-[#27272A] hover:border-[#FFFFFF] hover:text-white transition-all cursor-default hover:after:content-['|'] hover:after:animate-pulse">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
+                                        <div className="flex flex-wrap gap-1.5 md:gap-3 mb-8 md:mb-10 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.2em]">
+                                            {project.techStack.map(tech => (
+                                                <span key={tech} className="bg-black/60 text-[#A1A1AA] px-2.5 py-1.5 md:px-4 md:py-2 rounded-full border border-[#27272A] backdrop-blur-md group-hover:border-[#FFFFFF]/40 group-hover:text-white transition-colors">
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                        </div>
 
-                        <div className="w-full aspect-[4/5] sm:aspect-square md:aspect-[16/9] bg-[#000000] rounded-none overflow-hidden relative border border-[#27272A] flex items-center justify-center group-hover:border-[#FFFFFF]/50 transition-colors group/image">
-                            {project.image && (
-                                <img
-                                    src={project.image}
-                                    alt={project.title}
-                                    className="absolute inset-0 w-full h-full object-cover opacity-100 md:opacity-40 group-hover/image:opacity-80 transition-opacity duration-700"
-                                />
-                            )}
-                            <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none"></div>
-
-                            <div className="z-10 text-center bg-[#0A0A0A]/90 backdrop-blur-md p-4 sm:p-6 md:p-12 border border-[#27272A] shadow-2xl relative w-[90%] md:w-auto">
-                                <p className="font-mono text-[9px] md:text-[10px] text-[#A1A1AA] mb-6 md:mb-8 uppercase tracking-[0.3em] md:tracking-[0.5em] animate-pulse">[[ NEURAL_RENDER_ACTIVE ]]</p>
-                                <div className="flex flex-col sm:flex-row gap-3 sm:gap-6 justify-center w-full">
-                                    <a
-                                        href={project.links.live}
-                                        target="_blank" rel="noopener noreferrer"
-                                        className="px-4 py-3 sm:px-8 bg-[#FFFFFF] text-[#0B0C10] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-white transition-all w-full sm:w-auto min-h-[44px]"
-                                    >
-                                        LIVE_SIM <ArrowUpRight size={14} />
-                                    </a>
-                                    <a
-                                        href={project.links.github}
-                                        target="_blank" rel="noopener noreferrer"
-                                        className="px-4 py-3 sm:px-8 bg-transparent text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-[#FFFFFF] hover:text-[#FFFFFF] transition-all w-full sm:w-auto min-h-[44px]"
-                                    >
-                                        ACCESS_SRC <Github size={14} />
-                                    </a>
+                                        <div className="flex flex-col sm:flex-row gap-4 w-full border-t border-[#27272A]/50 pt-8">
+                                            <a
+                                                href={project.links.live}
+                                                target="_blank" rel="noopener noreferrer"
+                                                className="px-8 py-3.5 bg-white text-black text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-[#E2E8F0] hover:shadow-[var(--glow-white)] transition-all rounded-full min-h-[48px] flex-1 sm:flex-none"
+                                            >
+                                                LIVE_SIM <ArrowUpRight size={14} />
+                                            </a>
+                                            <a
+                                                href={project.links.github}
+                                                target="_blank" rel="noopener noreferrer"
+                                                className="px-8 py-3.5 bg-black/60 backdrop-blur-md text-white border border-[#27272A] text-[10px] font-black uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:border-white hover:text-white hover:shadow-[var(--glow-white)] transition-all rounded-full min-h-[48px] flex-1 sm:flex-none"
+                                            >
+                                                ACCESS_SRC <Github size={14} />
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </GlassCard>
+                        ))}
                     </div>
-                ))}
 
-                <div className="h-24 flex flex-col items-center justify-center border-t border-[#27272A] mt-20 gap-4">
-                    <p className="font-mono text-[9px] text-[#FFFFFF] tracking-[1em] uppercase">ANIXES.IN</p>
-                    <p className="font-mono text-[8px] text-[#A1A1AA] uppercase tracking-[0.4em]">© 2026 — PROTOCOL_STABLE</p>
+                    <div className="h-24 flex flex-col items-center justify-center border-t border-[#27272A] mt-8 gap-4 opacity-70">
+                        <p className="font-mono text-[9px] text-[#FFFFFF] tracking-[1em] uppercase">ANIXES.IN</p>
+                        <p className="font-mono text-[8px] text-[#A1A1AA] uppercase tracking-[0.4em]">© 2026 — PROTOCOL_STABLE</p>
+                    </div>
                 </div>
             </div>
-        </div>
+        </ViewTransition>
     );
 }

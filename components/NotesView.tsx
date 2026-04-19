@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '@/lib/data';
+import GlassCard from '@/components/ui/GlassCard';
+import ViewTransition from '@/components/ui/ViewTransition';
 
 interface NotesViewProps {
     view: string;
@@ -11,34 +13,80 @@ interface NotesViewProps {
 
 export default function NotesView({ view, setView }: NotesViewProps) {
     return (
-        <div
-            className={`absolute inset-0 flex flex-col w-full h-[100dvh] text-[#C5C6C7] overflow-y-auto p-6 pt-24 md:p-20 items-center justify-start md:justify-center smooth-transition bg-[#000000]
-        ${view === 'notes' ? 'opacity-100 z-20 pointer-events-auto scale-100' : 'opacity-0 z-0 pointer-events-none scale-105'}`}
-        >
-            <button onClick={() => setView('grid')} className="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-white transition-colors z-20 bg-[#000000]/80 p-2 md:p-0 rounded-md backdrop-blur-sm min-h-[44px] min-w-[44px]">
-                <ArrowLeft size={16} /> BACK_TO_HUB
-            </button>
+        <ViewTransition isVisible={view === 'notes'} direction="left" className="z-20">
+            <div className="w-full h-[100dvh] overflow-y-auto overflow-x-hidden relative bg-[#000000]">
+                {/* Fixed Background Texture */}
+                <div className="absolute inset-0 bg-[radial-gradient(#27272A_1px,transparent_1px)] [background-size:24px_24px] opacity-20 pointer-events-none z-[-1] fixed"></div>
 
-            <div className={`w-full max-w-4xl z-10 mt-8 md:mt-0 smooth-transition delay-100 ${view === 'notes' ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                <h1 className="text-5xl md:text-7xl font-black tracking-tighter mb-10 md:mb-16 text-white uppercase">Notes_</h1>
-                <div className="grid gap-8 md:gap-12 text-left">
-                    {portfolioData.notes.length > 0 ? (
-                        portfolioData.notes.map(note => (
-                            <div key={note.id} className="border-l-2 border-[#27272A] pl-6 md:pl-10 pb-6 md:pb-10 group hover:border-[#FFFFFF] transition-colors relative">
-                                <div className="absolute -left-[5px] top-0 w-2 h-2 bg-[#27272A] group-hover:bg-[#FFFFFF] transition-colors"></div>
-                                <span className="text-[10px] font-mono text-[#A1A1AA] mb-3 md:mb-4 block tracking-[0.3em] uppercase">{note.date} // ARCHIVE_PHASE</span>
-                                <h3 className="text-2xl font-black mb-4 md:mb-6 group-hover:text-white transition-colors uppercase tracking-tight">{note.title}</h3>
-                                <p className="text-[#C5C6C7]/60 mb-6 md:mb-8 font-light max-w-2xl">{note.summary}</p>
-                                <a href={note.link} className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#FFFFFF] hover:text-white flex items-center gap-3 group/link transition-colors min-h-[44px] py-2">
-                                    Read Protocol [0x1] <span className="group-hover/link:translate-x-2 transition-transform">&rarr;</span>
-                                </a>
-                            </div>
-                        ))
-                    ) : (
-                        <p className="text-xl text-[#A1A1AA] font-mono uppercase tracking-[0.2em] animate-pulse">[[ DATA_STREAM_EMPTY ]]</p>
-                    )}
+                {/* Back Button */}
+                <button 
+                    onClick={() => setView('grid')} 
+                    className="fixed top-6 left-6 md:top-10 md:left-10 z-50 flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-white transition-all bg-[#0A0A0A]/80 border border-[#27272A] hover:border-white px-5 min-h-[48px] rounded-full backdrop-blur-md shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+                >
+                    <ArrowLeft size={14} /> <span className="hidden md:inline">BACK_TO_HUB</span>
+                </button>
+
+                <div className="max-w-4xl mx-auto px-6 py-32 flex flex-col items-center">
+                    <div className="w-full mb-20 text-center md:text-left border-b border-[#27272A] pb-10">
+                        <h1 className="text-4xl md:text-7xl font-black tracking-tighter mb-4 text-white uppercase drop-shadow-lg">
+                            NOTES_LOG
+                        </h1>
+                        <p className="text-[#A1A1AA] text-xs font-mono tracking-widest uppercase">
+                            Archived thoughts, protocols, and architectural decisions.
+                        </p>
+                    </div>
+
+                    <div className="w-full flex flex-col gap-8 md:gap-12 pb-32">
+                        {portfolioData.notes.length > 0 ? (
+                            portfolioData.notes.map((note, idx) => (
+                                <GlassCard 
+                                    key={note.id}
+                                    hover3D={true}
+                                    delay={0.1 + (idx * 0.1)}
+                                    className="p-8 md:p-10 rounded-2xl group flex flex-col relative overflow-hidden"
+                                >
+                                    <div className="absolute top-0 right-0 p-6 text-[10px] font-mono tracking-widest text-[#52525B] uppercase hidden md:block">
+                                        [{idx + 1}/{portfolioData.notes.length}]
+                                    </div>
+
+                                    <div className="mb-6 flex items-center gap-4">
+                                        <div className="px-3 py-1 bg-[#18181B] border border-[#27272A] rounded-md backdrop-blur-sm">
+                                            <span className="text-[10px] font-mono text-[#A1A1AA] tracking-[0.2em] uppercase">
+                                                {note.date}
+                                            </span>
+                                        </div>
+                                        <span className="text-[9px] font-mono text-[#52525B] tracking-[0.3em] uppercase">
+                                            ARCHIVE_PHASE
+                                        </span>
+                                    </div>
+
+                                    <h3 className="text-2xl md:text-3xl font-black mb-6 text-white uppercase tracking-tight group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] transition-all">
+                                        {note.title}
+                                    </h3>
+                                    
+                                    <p className="text-base md:text-lg text-[#C5C6C7] mb-10 font-light leading-relaxed max-w-2xl line-clamp-3 group-hover:line-clamp-none transition-all duration-500">
+                                        {note.summary}
+                                    </p>
+                                    
+                                    <div className="mt-auto border-t border-[#27272A]/50 pt-6">
+                                        <a href={note.link} className="inline-flex items-center gap-3 text-[10px] font-mono uppercase tracking-[0.3em] text-[#FFFFFF] hover:text-white bg-[#18181B] px-6 py-3 rounded-full border border-[#27272A] hover:border-white transition-all group/link hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                                            Read Protocol [0x1] <ArrowUpRight size={14} className="group-hover/link:rotate-45 group-hover/link:translate-x-1 group-hover/link:-translate-y-1 transition-transform" />
+                                        </a>
+                                    </div>
+                                </GlassCard>
+                            ))
+                        ) : (
+                            <GlassCard hover3D={false} delay={0.1} className="p-16 rounded-2xl flex flex-col items-center justify-center text-center">
+                                <div className="w-16 h-16 bg-[#18181B] border border-[#27272A] rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(255,255,255,0.05)]">
+                                    <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
+                                </div>
+                                <p className="text-xl text-white font-black uppercase tracking-tight mb-2">Empty Stream</p>
+                                <p className="text-[#A1A1AA] font-mono text-xs uppercase tracking-[0.2em]">[[ NO_DATA_AVAILABLE ]]</p>
+                            </GlassCard>
+                        )}
+                    </div>
                 </div>
             </div>
-        </div>
+        </ViewTransition>
     );
 }

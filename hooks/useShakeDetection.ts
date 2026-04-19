@@ -31,19 +31,21 @@ export function useShakeDetection(onShake?: () => void) {
       }
     };
 
-    // Request permission on iOS 13+
+    // Request permission on iOS 13+ and ensure object exists
     const requestAndListen = async () => {
-      if (typeof (DeviceMotionEvent as any).requestPermission === 'function') {
-        try {
-          const res = await (DeviceMotionEvent as any).requestPermission();
-          if (res === 'granted') {
-            window.addEventListener('devicemotion', handler);
+      if (typeof window !== 'undefined' && typeof window.DeviceMotionEvent !== 'undefined') {
+        if (typeof (window.DeviceMotionEvent as any).requestPermission === 'function') {
+          try {
+            const res = await (window.DeviceMotionEvent as any).requestPermission();
+            if (res === 'granted') {
+              window.addEventListener('devicemotion', handler);
+            }
+          } catch {
+            // Permission denied or unavailable
           }
-        } catch {
-          // Permission denied or unavailable
+        } else {
+          window.addEventListener('devicemotion', handler);
         }
-      } else {
-        window.addEventListener('devicemotion', handler);
       }
     };
 
