@@ -31,10 +31,10 @@ export default function App() {
         const timer = setTimeout(() => setTitlePhase(1), 100);
         return () => clearTimeout(timer);
       } else if (titlePhase === 1) {
-        const timer = setTimeout(() => setTitlePhase(2), 1200);
+        const timer = setTimeout(() => setTitlePhase(2), 400);
         return () => clearTimeout(timer);
       } else if (titlePhase === 2) {
-        const timer = setTimeout(() => setTitlePhase(3), 1300);
+        const timer = setTimeout(() => setTitlePhase(3), 300);
         return () => clearTimeout(timer);
       }
     }

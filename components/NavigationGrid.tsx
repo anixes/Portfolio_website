@@ -14,11 +14,13 @@ interface NavigationGridProps {
 const GridTile = ({ 
     children, 
     className, 
+    innerClassName = "items-center justify-center",
     onClick, 
     style 
 }: { 
     children: React.ReactNode, 
     className?: string, 
+    innerClassName?: string,
     onClick?: () => void,
     style?: React.CSSProperties
 }) => {
@@ -59,7 +61,7 @@ const GridTile = ({
             style={{ ...style }}
         >
             {/* The inner content gets the 3D transform */}
-            <div className="w-full h-full flex flex-col items-center justify-center pointer-events-none" style={tiltStyle}>
+            <div className={`w-full h-full flex flex-col pointer-events-none relative ${innerClassName}`} style={tiltStyle}>
                 {children}
             </div>
         </div>
@@ -126,16 +128,17 @@ export default function NavigationGrid({ view, setView }: NavigationGridProps) {
                 {/* PROJECTS */}
                 <GridTile
                     onClick={() => setView('projects')}
-                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0 flex-col !items-start !justify-end`}
+                    className={`${activeLayout[0]} min-h-[250px] sm:min-h-[300px] md:min-h-0`}
+                    innerClassName="items-start justify-end w-full h-full"
                     style={{ animation: view === 'grid' ? 'cyber-glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s both' : 'none' }}
                 >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundImage: blueprintPattern }}></div>
                     <div className="crosshair-tl transition-colors group-hover:border-[#A1A1AA]"></div>
                     <div className="crosshair-br transition-colors group-hover:border-[#A1A1AA]"></div>
-                    <div className="absolute top-4 right-4 md:top-6 md:right-6 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
+                    <div className="absolute top-0 right-0 text-[8px] font-mono tracking-widest text-[#52525B] group-hover:text-[#A1A1AA] transition-colors">
                         SEC // 01 [PRIMARY]
                     </div>
-                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 leading-none">
+                    <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter text-[#A1A1AA] group-hover:text-[#FFFFFF] transition-colors relative z-10 leading-none pr-12 w-full break-normal lg:whitespace-nowrap">
                         PROJECTS.
                     </h2>
                     <p className="mt-4 text-[10px] font-mono tracking-[0.2em] text-[#52525B] group-hover:text-[#A1A1AA] uppercase">

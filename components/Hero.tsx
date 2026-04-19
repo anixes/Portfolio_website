@@ -20,7 +20,8 @@ const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
         { text: "ARTIFICIAL INTELLIGENCE.", color: "text-[#A1A1AA]", shadow: "rgba(161, 161, 170, 0.6)" },
         { text: "VIBE CODING.", color: "text-[#F8FAFC]", shadow: "rgba(248, 250, 252, 0.6)" },
         { text: "BACKEND.", color: "text-[#E0F2FE]", shadow: "rgba(224, 242, 254, 0.6)" },
-        { text: "FRONTEND.", color: "text-[#FFFFFF]", shadow: "rgba(255, 255, 255, 0.4)" }
+        { text: "FRONTEND.", color: "text-[#FFFFFF]", shadow: "rgba(255, 255, 255, 0.4)" },
+        { text: "WEB DEV.", color: "text-[#E2E8F0]", shadow: "rgba(226, 232, 240, 0.6)" }
     ];
     const [roleIndex, setRoleIndex] = useState(0);
     const [display, setDisplay] = useState(roles[0].text);
@@ -45,8 +46,8 @@ const AnimatedRoleTitle = ({ phase }: { phase: number }) => {
                 setDisplay(nextRole);
                 setRoleIndex(nextIndex);
                 setIsGlitching(false);
-            }, 150);
-        }, 1200);
+            }, 80);
+        }, 800);
 
         return () => clearInterval(interval);
     }, [roleIndex, phase]);
