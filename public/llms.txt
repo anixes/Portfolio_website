@@ -1,0 +1,39 @@
+# Animesh Dwivedi — Data Scientist & ML Product Engineer
+
+Animesh Dwivedi is a Data Scientist and Machine Learning Product Engineer focused on building end-to-end AI and data products: from analytics to feature engineering, modeling, and production deployment.
+
+## Contact Information
+- Website: https://github.com/anixes
+- Email: animeshdwivedi577@gmail.com
+- Phone: +91 63928 76782
+- GitHub: https://github.com/anixes
+- LinkedIn: https://linkedin.com
+
+## Technical Stack
+- Languages: Python, SQL (PostgreSQL, MySQL)
+- Core Libraries: PyTorch, Pandas, NumPy, CatBoost, LightGBM, XGBoost, Optuna, SHAP, Pytest, Pandera
+- MLOps & Infrastructure: FastAPI, Docker, GitHub Actions, AWS (EC2), DVC, MLflow
+
+## Featured Projects
+
+### 1. NCR Property Intelligence
+- **Type**: ML Product & Recommendation System
+- **Capability**: Scrapes 43,000+ spatial property listings using async Playwright pipelines, validates fields with Pandera schemas, encodes spatial coordinates into H3 grid levels, and fits predictive pricing models using CatBoost. Deployed via FastAPI on AWS.
+- **Key Metrics**:
+  - Regression Error (MAPE): < 9%
+  - Inference Latency: 14ms
+  - Spatial Resolution: H3 Level 8
+
+### 2. Delivery Delay Predictor
+- **Type**: Classification & Explainable AI
+- **Capability**: Builds feature engineering pipelines using complex SQL queries on 100k+ historical order datasets. Employs CatBoost classifiers and computes SHAP feature importance vectors to explain delay predictions. Containerized with Docker (reduced image size by 76% from 2.1GB to 500MB) and deployed via GitHub Actions to AWS EC2.
+- **Key Metrics**:
+  - Inference Speed: 11ms
+  - Dataset size: 100k+ orders
+
+### 3. Promo Impact & Forecasting
+- **Type**: Time-Series Forecasting & Business Analytics
+- **Capability**: Analyzes promotional datasets, runs regressions with fixed-effects models, and trains Prophet + LightGBM models for chronological forecasting horizons up to 90 days. Uses DVC to version model weights.
+- **Key Metrics**:
+  - Prediction Horizon: 90 Days
+  - Fit Performance: 94.2% R²
