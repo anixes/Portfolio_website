@@ -5,7 +5,6 @@ import { PortalNexora } from './experiments/PortalNexora';
 import { PortalEditorial } from './experiments/PortalEditorial';
 import { FreelanceDesignPro } from './experiments/FreelanceDesignPro';
 import { PortfolioDataScience } from './experiments/PortfolioDataScience';
-import { InteractiveNeuralNetwork } from './components/InteractiveNeuralNetwork';
 
 export const App: React.FC = () => {
   const [currentRoute, setCurrentRoute] = useState<string>('home');
@@ -32,8 +31,6 @@ export const App: React.FC = () => {
 
   return (
     <main className="w-full min-h-screen bg-black text-[#D7E2EA] font-sans relative">
-      {/* Global Three.js Interactive Background */}
-      <InteractiveNeuralNetwork />
       {renderView()}
     </main>
   );
