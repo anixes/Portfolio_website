@@ -217,7 +217,7 @@ export const InteractiveNeuralNetwork: React.FC = () => {
             linePosArr[offset + 5] = bz;
 
             // Calculate opacity based on distance (closer = brighter)
-            const alpha = (1 - dist / maxDistance) * 0.35;
+            const alpha = (1 - dist / maxDistance) * 0.22;
 
             // Gradient colors between purple/indigo and teal glow
             lineColArr[offset] = 0.35 * alpha; // R
