@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
+import { DataNebula } from '../components/DataNebula';
 
 interface HeroSectionProps {
   onContactClick?: () => void;
@@ -51,6 +52,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
 
   return (
     <section className="relative h-screen w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C]">
+      {/* 3D Interactive Data Nebula */}
+      <DataNebula />
       {/* Navbar Header */}
       <FadeIn delay={0} y={-20} className="w-full z-20">
         <header className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 w-full">
