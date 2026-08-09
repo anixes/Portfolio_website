@@ -44,16 +44,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         </FadeIn>
       </div>
 
-      {/* Top-Right: Custom 3D Pixar Avatar */}
+      {/* Top-Right: Lego icon */}
       <div className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] pointer-events-none z-10">
         <FadeIn delay={0.15} x={80} y={0} duration={0.9}>
           <img
-            src="/avatar-3d-new.png"
-            alt="Animesh 3D Avatar"
+            src="https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png"
+            alt=""
+            aria-hidden="true"
             loading="lazy"
             width="210"
             height="210"
-            className="w-[120px] sm:w-[160px] md:w-[210px] h-auto object-contain rounded-full select-none opacity-95 drop-shadow-[0_10px_15px_rgba(255,255,255,0.08)]"
+            className="w-[120px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none opacity-90 drop-shadow-xl"
           />
         </FadeIn>
       </div>
@@ -86,10 +87,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         </FadeIn>
 
         {/* Gap between heading & text */}
-        <div className="mt-8 sm:mt-12 md:mt-14 mb-12 sm:mb-16 md:mb-20 w-full flex justify-center px-4">
+        <div className="mt-10 sm:mt-14 md:mt-16 mb-16 sm:mb-20 md:mb-24 w-full flex justify-center">
           <AnimatedText
             text="I am a Data Scientist and Machine Learning Engineer focused on building end-to-end AI and data products: from analytics to feature engineering, modeling, and production deployment. I specialize in building deployed applications combining predictive modeling, recommendation systems, SQL analytics, containerized APIs, dashboards, CI/CD automation, and cloud deployment workflows."
-            className="text-[#D7E2EA] font-medium text-center leading-relaxed text-base sm:text-lg md:text-xl max-w-[720px]"
+            className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
           />
         </div>
 
