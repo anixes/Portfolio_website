@@ -14,7 +14,7 @@ const resolveRouteFromUrl = (): string => {
   const target = path || hash;
 
   if (!target || target === 'ml' || target === 'resume' || target === 'portfolio-ml') {
-    // Default live route is Animesh's ML Resume & Portfolio
+    // Default live route is Animesh's ML Resume & Portfolio (Verified)
     return 'portfolio-ml';
   }
 
