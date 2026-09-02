@@ -13,6 +13,8 @@ export default {
       fontFamily: {
         sans: ['Kanit', 'sans-serif'],
         kanit: ['Kanit', 'sans-serif'],
+        heading: ["'Instrument Serif'", "serif"],
+        body: ["'Barlow'", "sans-serif"],
       },
     },
   },
