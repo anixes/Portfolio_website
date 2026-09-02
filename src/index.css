@@ -119,3 +119,45 @@ html, body, #root {
   scrollbar-width: none;  /* Firefox */
 }
 
+/* ==========================================================================
+   GLOBAL DARK-THEME SCROLLBARS (Eliminates White Windows/Browser Scrollbars)
+   ========================================================================== */
+
+/* WebKit (Chrome, Edge, Safari, Brave, Opera) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0C0C0C !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a !important;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b5cf6 !important;
+}
+
+/* Eliminate white arrow buttons at the top & bottom on Windows */
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: #0C0C0C !important;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #27272a #0C0C0C;
+}
+
+

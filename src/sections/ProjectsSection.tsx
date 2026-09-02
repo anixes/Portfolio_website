@@ -243,8 +243,10 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
           scale,
           top: `${index * 24}px`,
         }}
-        className={`relative w-full max-w-6xl h-auto md:h-full max-h-none md:max-h-full rounded-[28px] sm:rounded-[40px] md:rounded-[48px] border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top overflow-visible md:overflow-y-auto scrollbar-thin transition-colors ${
-          isExpanded ? 'border-purple-500/60 ring-2 ring-purple-500/20' : 'border-[#D7E2EA]'
+        className={`relative w-full max-w-6xl h-auto md:h-full max-h-none md:max-h-full rounded-[28px] sm:rounded-[40px] md:rounded-[48px] border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top transition-colors ${
+          isExpanded
+            ? 'border-purple-500/60 ring-2 ring-purple-500/20 overflow-y-auto'
+            : 'border-[#D7E2EA] overflow-hidden'
         }`}
       >
         {/* Top Row: Title + Category + Deep Dive Action */}
