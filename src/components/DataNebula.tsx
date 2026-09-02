@@ -16,12 +16,12 @@ export const DataNebula: React.FC = () => {
     camera.position.z = 250;
 
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-    renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    const isMobileDevice = window.innerWidth < 768;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobileDevice ? 1.5 : 2));
     containerRef.current.appendChild(renderer.domElement);
 
-    // Particles configuration
-    const particleCount = window.innerWidth < 768 ? 1200 : 2500;
+    // Particles configuration: conservative count on mobile to conserve GPU & battery
+    const particleCount = isMobileDevice ? 800 : 2500;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
     const initialPositions = new Float32Array(particleCount * 3);
@@ -113,7 +113,7 @@ export const DataNebula: React.FC = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('touchmove', handleTouchMove);
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     // Animation Loop
     let animationFrameId: number;

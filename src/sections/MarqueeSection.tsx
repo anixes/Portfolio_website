@@ -34,24 +34,41 @@ const tripledRow2 = [...row2Images, ...row2Images, ...row2Images];
 export const MarqueeSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = window.scrollY + rect.top;
-      // Scroll offset calculated as: (window.scrollY - sectionTop + window.innerHeight) * 0.3
-      const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
-      setScrollOffset(offset);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (!sectionRef.current) return;
+          const rect = sectionRef.current.getBoundingClientRect();
+          const sectionTop = window.scrollY + rect.top;
+          const offset = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+          setScrollOffset(offset);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  const displayRow1 = isMobile ? [...row1Images.slice(0, 6), ...row1Images.slice(0, 6)] : tripledRow1;
+  const displayRow2 = isMobile ? [...row2Images.slice(0, 6), ...row2Images.slice(0, 6)] : tripledRow2;
 
   const row1Transform = scrollOffset - 200;
   const row2Transform = -(scrollOffset - 200);
@@ -59,20 +76,20 @@ export const MarqueeSection: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#0C0C0C] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden flex flex-col gap-3"
+      className="w-full bg-[#0C0C0C] pt-16 sm:pt-28 md:pt-36 pb-8 sm:pb-10 overflow-hidden flex flex-col gap-2.5 sm:gap-3"
     >
-      {/* Row 1: Moves RIGHT on scroll (translateX(offset - 200)) */}
+      {/* Row 1: Moves RIGHT on scroll */}
       <div
-        className="flex gap-3 w-max"
+        className="flex gap-2.5 sm:gap-3 w-max"
         style={{
           transform: `translateX(${row1Transform}px)`,
           willChange: 'transform',
         }}
       >
-        {tripledRow1.map((src, idx) => (
+        {displayRow1.map((src, idx) => (
           <div
             key={`r1-${idx}`}
-            className="w-[300px] sm:w-[380px] md:w-[420px] h-[190px] sm:h-[240px] md:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 bg-neutral-900 border border-neutral-800/40"
+            className="w-[200px] xs:w-[240px] sm:w-[360px] md:w-[420px] h-[130px] xs:h-[155px] sm:h-[230px] md:h-[270px] rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 bg-neutral-900 border border-neutral-800/40"
           >
             <img
               src={src}
@@ -84,18 +101,18 @@ export const MarqueeSection: React.FC = () => {
         ))}
       </div>
 
-      {/* Row 2: Moves LEFT on scroll (translateX(-(offset - 200))) */}
+      {/* Row 2: Moves LEFT on scroll */}
       <div
-        className="flex gap-3 w-max"
+        className="flex gap-2.5 sm:gap-3 w-max"
         style={{
           transform: `translateX(${row2Transform}px)`,
           willChange: 'transform',
         }}
       >
-        {tripledRow2.map((src, idx) => (
+        {displayRow2.map((src, idx) => (
           <div
             key={`r2-${idx}`}
-            className="w-[300px] sm:w-[380px] md:w-[420px] h-[190px] sm:h-[240px] md:h-[270px] rounded-2xl overflow-hidden flex-shrink-0 bg-neutral-900 border border-neutral-800/40"
+            className="w-[200px] xs:w-[240px] sm:w-[360px] md:w-[420px] h-[130px] xs:h-[155px] sm:h-[230px] md:h-[270px] rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 bg-neutral-900 border border-neutral-800/40"
           >
             <img
               src={src}

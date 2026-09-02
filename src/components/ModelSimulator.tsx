@@ -160,7 +160,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                 step="50"
                 value={areaSqft}
                 onChange={(e) => setAreaSqft(Number(e.target.value))}
-                className="w-full accent-purple-500 cursor-pointer h-1.5 bg-neutral-800 rounded-lg"
+                className="w-full accent-purple-500 cursor-pointer h-2 bg-neutral-800 rounded-lg my-1.5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-neutral-500 font-mono">
                 <span>600 sq ft</span>
@@ -182,7 +182,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                   <button
                     key={item.id}
                     onClick={() => setLocality(item.id as any)}
-                    className={`px-3 py-2 rounded-lg text-xs font-medium text-left transition-all truncate border ${
+                    className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-medium text-left transition-all truncate border active:scale-95 flex items-center ${
                       locality === item.id
                         ? 'bg-purple-600/20 text-purple-300 border-purple-500/50 shadow-sm'
                         : 'bg-neutral-900/60 text-neutral-400 border-transparent hover:bg-neutral-900 hover:text-neutral-200'
@@ -209,7 +209,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                   step="0.1"
                   value={metroDistanceKm}
                   onChange={(e) => setMetroDistanceKm(Number(e.target.value))}
-                  className="w-full accent-cyan-400 cursor-pointer h-1.5 bg-neutral-800 rounded-lg"
+                  className="w-full accent-cyan-400 cursor-pointer h-2 bg-neutral-800 rounded-lg my-1.5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
                 />
                 <span className="text-[10px] text-neutral-500">
                   {metroDistanceKm <= 1.0 ? 'Walking distance (< 1km)' : metroDistanceKm <= 3.0 ? 'Short commute' : 'Extended transit feeder'}
@@ -229,7 +229,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                   step="1"
                   value={luxuryScore}
                   onChange={(e) => setLuxuryScore(Number(e.target.value))}
-                  className="w-full accent-amber-400 cursor-pointer h-1.5 bg-neutral-800 rounded-lg"
+                  className="w-full accent-amber-400 cursor-pointer h-2 bg-neutral-800 rounded-lg my-1.5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
                 />
                 <span className="text-[10px] text-neutral-500">
                   {luxuryScore >= 4 ? 'High-end clubhouse & automation' : 'Standard residential fixtures'}
@@ -307,7 +307,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                 step="10"
                 value={transitDistance}
                 onChange={(e) => setTransitDistance(Number(e.target.value))}
-                className="w-full accent-purple-500 cursor-pointer h-1.5 bg-neutral-800 rounded-lg"
+                className="w-full accent-purple-500 cursor-pointer h-2 bg-neutral-800 rounded-lg my-1.5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
               />
               <div className="flex justify-between text-[10px] text-neutral-500 font-mono">
                 <span>Intra-City (30km)</span>
@@ -330,7 +330,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                     <button
                       key={w.id}
                       onClick={() => setWeatherSeverity(w.id as any)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium text-left transition-all border ${
+                      className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-medium text-left transition-all border active:scale-95 flex items-center ${
                         weatherSeverity === w.id
                           ? 'bg-blue-500/20 text-blue-300 border-blue-500/50'
                           : 'bg-neutral-900/60 text-neutral-400 border-transparent hover:bg-neutral-900'
@@ -354,7 +354,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                     <button
                       key={c.id}
                       onClick={() => setCourierTier(c.id as any)}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-medium text-left transition-all border ${
+                      className={`min-h-[44px] px-3 py-2 rounded-xl text-xs font-medium text-left transition-all border active:scale-95 flex items-center ${
                         courierTier === c.id
                           ? 'bg-purple-500/20 text-purple-300 border-purple-500/50'
                           : 'bg-neutral-900/60 text-neutral-400 border-transparent hover:bg-neutral-900'
@@ -380,7 +380,7 @@ export const ModelSimulator: React.FC<ModelSimulatorProps> = ({ projectType }) =
                 step="2"
                 value={hubCongestion}
                 onChange={(e) => setHubCongestion(Number(e.target.value))}
-                className="w-full accent-rose-500 cursor-pointer h-1.5 bg-neutral-800 rounded-lg"
+                className="w-full accent-rose-500 cursor-pointer h-2 bg-neutral-800 rounded-lg my-1.5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:cursor-pointer"
               />
             </div>
           </div>

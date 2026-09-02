@@ -236,14 +236,14 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
   return (
     <div
       ref={containerRef}
-      className="h-[88vh] min-h-[620px] w-full flex items-center justify-center sticky top-20 md:top-28"
+      className="min-h-[560px] md:h-[88vh] md:min-h-[620px] w-full flex items-center justify-center sticky top-16 sm:top-20 md:top-28"
     >
       <motion.div
         style={{
           scale,
           top: `${index * 24}px`,
         }}
-        className={`relative w-full max-w-6xl h-full max-h-full rounded-[36px] sm:rounded-[48px] border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top overflow-y-auto scrollbar-thin transition-colors ${
+        className={`relative w-full max-w-6xl h-auto md:h-full max-h-none md:max-h-full rounded-[28px] sm:rounded-[40px] md:rounded-[48px] border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top overflow-visible md:overflow-y-auto scrollbar-thin transition-colors ${
           isExpanded ? 'border-purple-500/60 ring-2 ring-purple-500/20' : 'border-[#D7E2EA]'
         }`}
       >
@@ -252,34 +252,34 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
           <div className="flex items-center gap-3 sm:gap-6 flex-wrap">
             <span
               className="font-black text-[#D7E2EA] leading-none select-none"
-              style={{ fontSize: 'clamp(2.2rem, 4.5vw, 4rem)' }}
+              style={{ fontSize: 'clamp(2rem, 4.5vw, 4rem)' }}
             >
               {project.number}
             </span>
             <div className="flex flex-col">
-              <span className="text-[#D7E2EA] font-light uppercase tracking-widest text-xs sm:text-sm opacity-70">
+              <span className="text-[#D7E2EA] font-light uppercase tracking-widest text-[11px] sm:text-sm opacity-70">
                 {project.category}
               </span>
-              <h3 className="text-[#D7E2EA] font-medium uppercase text-lg sm:text-2xl md:text-3xl tracking-wide">
+              <h3 className="text-[#D7E2EA] font-medium uppercase text-base sm:text-2xl md:text-3xl tracking-wide">
                 {project.name}
               </h3>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto mt-1 sm:mt-0">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider border border-purple-400/50 text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 transition-all cursor-pointer flex items-center gap-1.5 shadow-sm"
+              className="min-h-[44px] rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider border border-purple-400/50 text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm flex-1 sm:flex-initial"
             >
               {isExpanded ? 'Close Technical Deep Dive' : 'Explore Technical Deep Dive'}
               <ArrowDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
             </button>
             {project.liveUrl && project.liveUrl !== '#' && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex items-center">
                 <LiveProjectButton label="Live App" />
               </a>
             )}
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex items-center">
               <LiveProjectButton label="GitHub" />
             </a>
           </div>
@@ -293,14 +293,14 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
-              className="w-full mt-5 pt-5 border-t border-neutral-800/80 flex flex-col gap-6"
+              className="w-full mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-neutral-800/80 flex flex-col gap-6"
             >
               {/* Deep Dive Navigation Tabs */}
-              <div className="flex flex-wrap items-center justify-between gap-3 bg-neutral-950/90 p-1.5 rounded-2xl border border-neutral-800">
-                <div className="flex items-center gap-1.5">
+              <div className="flex items-center justify-between gap-3 bg-neutral-950/90 p-1.5 rounded-2xl border border-neutral-800 overflow-x-auto no-scrollbar max-w-full">
+                <div className="flex items-center gap-1.5 flex-nowrap shrink-0">
                   <button
                     onClick={() => setActiveTab('simulator')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
                       activeTab === 'simulator'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
@@ -312,7 +312,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
 
                   <button
                     onClick={() => setActiveTab('pipeline')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
                       activeTab === 'pipeline'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
@@ -324,7 +324,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
 
                   <button
                     onClick={() => setActiveTab('benchmarks')}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
                       activeTab === 'benchmarks'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
@@ -335,7 +335,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                   </button>
                 </div>
 
-                <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono text-neutral-500 pr-2">
+                <div className="hidden md:flex items-center gap-2 text-[11px] font-mono text-neutral-500 pr-2">
                   <span>Interactive Proof Mode</span>
                 </div>
               </div>
@@ -360,7 +360,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                       <span className="text-[10px] text-neutral-500 font-mono">5 Stages Verified</span>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3">
                       {project.pipeline.map((step, idx) => {
                         const StepIcon = step.icon;
                         const isSelected = selectedStage === idx;
@@ -369,24 +369,24 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                           <button
                             key={idx}
                             onClick={() => setSelectedStage(idx)}
-                            className={`relative text-left flex flex-col p-4 rounded-2xl border transition-all cursor-pointer ${
+                            className={`relative text-left flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all cursor-pointer min-h-[48px] active:scale-95 ${
                               isSelected
                                 ? 'bg-purple-950/30 border-purple-500 shadow-md ring-1 ring-purple-500/30'
                                 : 'bg-neutral-950 border-neutral-800/80 hover:border-neutral-700'
                             }`}
                           >
-                            <div className="flex justify-between items-center mb-3">
-                              <div className={`p-2.5 rounded-xl border ${
+                            <div className="flex justify-between items-center mb-2 sm:mb-3">
+                              <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl border ${
                                 isSelected 
                                   ? 'bg-purple-500/20 border-purple-500/40 text-purple-300' 
                                   : 'bg-white/5 border-white/10 text-neutral-400'
                               }`}>
-                                <StepIcon className="w-4 h-4" />
+                                <StepIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                               </div>
                               <span className="text-[10px] font-mono text-neutral-500 font-bold">STAGE 0{idx + 1}</span>
                             </div>
-                            <h5 className="text-xs font-bold text-white uppercase mb-1">{step.label}</h5>
-                            <p className="text-[11px] text-neutral-400 leading-normal line-clamp-2">{step.desc}</p>
+                            <h5 className="text-[11px] sm:text-xs font-bold text-white uppercase mb-0.5 sm:mb-1">{step.label}</h5>
+                            <p className="text-[10px] sm:text-[11px] text-neutral-400 leading-normal line-clamp-2">{step.desc}</p>
                           </button>
                         );
                       })}
@@ -396,8 +396,8 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                   {/* Click-to-inspect Stage Deep Dive Box */}
                   <div className="p-4 sm:p-5 rounded-2xl bg-neutral-950 border border-purple-500/30 shadow-xl flex flex-col gap-2">
                     <div className="flex items-center gap-2 text-xs font-mono text-purple-400 font-bold uppercase tracking-wider">
-                      <ChevronRight className="w-4 h-4" />
-                      Stage 0{selectedStage + 1} Deep Engineering Specification: {project.pipeline[selectedStage].label}
+                      <ChevronRight className="w-4 h-4 shrink-0" />
+                      <span>Stage 0{selectedStage + 1} Deep Engineering Specification: {project.pipeline[selectedStage].label}</span>
                     </div>
                     <p className="text-xs text-neutral-300 leading-relaxed">
                       {project.pipeline[selectedStage].deepSpec}
@@ -412,12 +412,12 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                         <CheckCircle className="w-4 h-4 text-emerald-400" />
                         Production Metrics & Telemetry
                       </h4>
-                      <div className="grid grid-cols-3 gap-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                         {project.metrics.map((metric, idx) => (
-                          <div key={idx} className="bg-neutral-950 border border-neutral-800/80 rounded-2xl p-3.5 text-center">
-                            <div className="text-neutral-500 text-[10px] uppercase font-mono tracking-wider mb-1">{metric.label}</div>
-                            <div className={`text-xl sm:text-2xl font-black ${metric.color} tracking-tight`}>{metric.value}</div>
-                            <div className="text-[10px] text-neutral-400 mt-1 leading-tight">{metric.desc}</div>
+                          <div key={idx} className="bg-neutral-950 border border-neutral-800/80 rounded-xl sm:rounded-2xl p-3 sm:p-3.5 text-center flex flex-col justify-center">
+                            <div className="text-neutral-500 text-[10px] uppercase font-mono tracking-wider mb-0.5">{metric.label}</div>
+                            <div className={`text-lg sm:text-2xl font-black ${metric.color} tracking-tight`}>{metric.value}</div>
+                            <div className="text-[10px] text-neutral-400 mt-0.5 leading-tight">{metric.desc}</div>
                           </div>
                         ))}
                       </div>
