@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { HeroSection } from '../sections/HeroSection';
-import { MarqueeSection } from '../sections/MarqueeSection';
 import { AboutSection } from '../sections/AboutSection';
 import { ServicesSection } from '../sections/ServicesSection';
 import { ProjectsSection } from '../sections/ProjectsSection';
@@ -20,10 +19,7 @@ export const PortfolioDataScience: React.FC = () => {
       {/* SECTION 1: HERO */}
       <HeroSection onContactClick={handleContactClick} />
 
-      {/* SECTION 2: MARQUEE */}
-      <MarqueeSection />
-
-      {/* SECTION 3: ABOUT */}
+      {/* SECTION 2: ABOUT */}
       <AboutSection onContactClick={handleContactClick} />
 
       {/* SECTION 4: SERVICES/SKILLS */}
