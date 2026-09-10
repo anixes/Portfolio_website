@@ -52,12 +52,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
   };
 
   return (
-    <section className="relative h-screen w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C]">
+    <section className="relative h-[100dvh] min-h-[100dvh] w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C]">
       {/* 3D Interactive Data Nebula */}
       <DataNebula />
       {/* Navbar Header */}
       <FadeIn delay={0} y={-20} className="w-full z-20">
-        <header className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8 w-full">
+        <header className="flex justify-between items-center px-5 sm:px-8 md:px-10 pt-5 sm:pt-6 md:pt-8 w-full">
           {/* Brand/Initials */}
           <a
             href="#"
@@ -99,10 +99,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
             </a>
           </nav>
 
-          {/* Hamburger Menu Trigger (Mobile only) */}
+          {/* Hamburger Menu Trigger (Mobile only, min 48px touch target per HIG) */}
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="md:hidden w-12 h-12 flex items-center justify-center rounded-full border border-[#D7E2EA]/20 bg-neutral-900/40 text-white hover:text-purple-400 hover:border-purple-400/40 active:scale-95 transition-all cursor-pointer"
+            className="md:hidden w-12 h-12 flex items-center justify-center rounded-full border border-[#D7E2EA]/20 bg-neutral-900/60 text-white hover:text-purple-400 hover:border-purple-400/40 active:scale-95 transition-all cursor-pointer"
             aria-label="Open Menu"
           >
             <MenuIcon className="w-5 h-5" />
@@ -110,44 +110,44 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
         </header>
       </FadeIn>
 
-      {/* Kinetic Animated Hero Heading (No clipping/overflow-hidden so ambient glow blends naturally) */}
-      <div className="w-full overflow-visible flex justify-center z-0 mt-4 sm:mt-4 md:-mt-5 px-3 sm:px-4">
+      {/* Hero Center Stage: Heading & Proportionately Nestled Avatar */}
+      <div className="relative flex-1 flex flex-col justify-center items-center w-full z-10 px-3 sm:px-4 my-auto">
         <KineticHeroTitle />
-      </div>
 
-      {/* Center 3D Floating Avatar (Original) */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none w-full px-4">
-        <FadeIn delay={0.2} y={0} duration={1.0} className="w-[180px] xs:w-[220px] sm:w-[320px] md:w-[420px] lg:w-[480px]">
-          <Magnet
-            padding={120}
-            strength={3}
-            className="w-full flex justify-center"
-          >
-            <img
-              src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-              alt="Animesh Dwivedi Portrait"
-              className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl max-h-[42vh] sm:max-h-none"
-            />
-          </Magnet>
-        </FadeIn>
+        {/* Center 3D Floating Avatar (Proportionally scaled for mobile screens) */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none w-full px-4 -translate-y-4 sm:translate-y-0">
+          <FadeIn delay={0.2} y={0} duration={1.0} className="w-[110px] xs:w-[124px] sm:w-[260px] md:w-[360px] lg:w-[440px]">
+            <Magnet
+              padding={80}
+              strength={2.5}
+              className="w-full flex justify-center"
+            >
+              <img
+                src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
+                alt="Animesh Dwivedi Portrait"
+                className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl max-h-[24vh] sm:max-h-[42vh]"
+              />
+            </Magnet>
+          </FadeIn>
+        </div>
       </div>
 
       {/* Seamless Bottom Edge Gradient Blend into #0C0C0C */}
-      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 inset-x-0 h-28 sm:h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
 
-      {/* Bottom Bar */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 w-full z-20 gap-3 sm:gap-0">
+      {/* Bottom Bar (Side-by-side with safe area padding on mobile) */}
+      <div className="flex flex-row justify-between items-end pb-6 sm:pb-8 md:pb-10 px-5 sm:px-8 md:px-10 w-full z-20 gap-3">
         {/* Left paragraph */}
         <FadeIn delay={0.35} y={20}>
           <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug max-w-[200px] sm:max-w-[220px] md:max-w-[260px] text-xs sm:text-sm md:text-base opacity-90"
+            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-relaxed max-w-[170px] xs:max-w-[210px] sm:max-w-[240px] md:max-w-[280px] text-[10.5px] xs:text-xs sm:text-sm md:text-base opacity-90"
           >
             a data scientist & ml engineer focused on building end-to-end ai and data products
           </p>
         </FadeIn>
 
         {/* Right Contact Button */}
-        <FadeIn delay={0.5} y={20} className="w-full sm:w-auto flex justify-end">
+        <FadeIn delay={0.5} y={20} className="shrink-0">
           <ContactButton onClick={onContactClick} />
         </FadeIn>
       </div>

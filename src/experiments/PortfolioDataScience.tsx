@@ -15,7 +15,7 @@ export const PortfolioDataScience: React.FC = () => {
   };
 
   return (
-    <div className="w-full bg-[#0C0C0C] text-[#D7E2EA] font-sans overflow-x-clip min-h-screen relative pt-14 select-none">
+    <div className="w-full bg-[#0C0C0C] text-[#D7E2EA] font-sans overflow-x-clip min-h-screen relative select-none">
       {/* SECTION 1: HERO */}
       <HeroSection onContactClick={handleContactClick} />
 

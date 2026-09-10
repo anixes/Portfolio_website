@@ -128,7 +128,7 @@ export const ServicesSection: React.FC = () => {
               </div>
 
               {/* Filter Pills */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1.5 pt-0.5 max-w-full no-scrollbar text-xs">
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 pt-1 max-w-full no-scrollbar snap-x touch-pan-x scroll-smooth -mx-2 px-2 sm:mx-0 sm:px-0 text-xs">
                 {[
                   { id: 'all', label: 'All Tech' },
                   { id: 'ml', label: 'Modeling & AI' },
@@ -139,7 +139,7 @@ export const ServicesSection: React.FC = () => {
                   <button
                     key={tab.id}
                     onClick={() => setSelectedFilter(tab.id as any)}
-                    className={`min-h-[44px] px-3.5 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all active:scale-95 flex items-center justify-center ${
+                    className={`min-h-[44px] px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all active:scale-95 flex items-center justify-center snap-start shrink-0 ${
                       selectedFilter === tab.id
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'bg-neutral-900/80 text-neutral-400 hover:text-white hover:bg-neutral-800'

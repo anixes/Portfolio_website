@@ -90,21 +90,21 @@ export const KineticHeroTitle: React.FC = () => {
     >
       {/* Top Line: HI, I'M */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex items-center justify-center gap-1 sm:gap-2 leading-none"
+        className="flex items-center justify-center gap-1 sm:gap-2 leading-none mb-3 sm:mb-2 -translate-y-4 sm:translate-y-0"
       >
         {topPhrase.map((char, index) => (
           <motion.span
             key={`top-${index}`}
             whileHover={{
-              y: -8,
-              scale: 1.12,
+              y: -6,
+              scale: 1.1,
               color: '#C084FC',
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="hero-heading inline-block font-black uppercase tracking-tight text-white/90 drop-shadow-[0_4px_24px_rgba(255,255,255,0.15)] text-[12vw] sm:text-[13vw] md:text-[14vw] lg:text-[15vw] cursor-default"
+            className="hero-heading inline-block font-black uppercase tracking-tight text-white/90 drop-shadow-[0_4px_24px_rgba(255,255,255,0.15)] text-[9vw] xs:text-[10vw] sm:text-[13vw] md:text-[14vw] lg:text-[15vw] cursor-default"
           >
             {char === ' ' ? '\u00A0' : char}
           </motion.span>
@@ -113,15 +113,17 @@ export const KineticHeroTitle: React.FC = () => {
 
       {/* Bottom Line: ANIMESH with iridescent gradient, cyber decoder, & interactive bounce */}
       <motion.div
-        initial={{ opacity: 0, y: 40, scale: 0.95 }}
+        initial={{ opacity: 0, y: 35, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         onMouseEnter={triggerScramble}
-        className="relative group inline-flex items-center justify-center leading-none mt-1 sm:mt-2 cursor-pointer"
+        onClick={triggerScramble}
+        onTouchStart={triggerScramble}
+        className="relative group inline-flex items-center justify-center leading-none mt-0.5 sm:mt-2 cursor-pointer touch-manipulation"
       >
         {/* Organic Radial Neon Aura that seamlessly fades to 100% transparent (Zero hard edges) */}
         <div
-          className="absolute -inset-x-24 -inset-y-16 rounded-full pointer-events-none -z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700 blur-3xl"
+          className="absolute -inset-x-12 sm:-inset-x-24 -inset-y-10 sm:-inset-y-16 rounded-full pointer-events-none -z-10 opacity-60 group-hover:opacity-100 transition-opacity duration-700 blur-2xl sm:blur-3xl"
           style={{
             background: 'radial-gradient(ellipse 70% 60% at 50% 50%, rgba(168, 85, 247, 0.35) 0%, rgba(99, 102, 241, 0.2) 40%, rgba(56, 189, 248, 0.08) 60%, transparent 80%)',
           }}
@@ -142,12 +144,12 @@ export const KineticHeroTitle: React.FC = () => {
                 damping: 15,
               }}
               whileHover={{
-                y: -14,
+                y: -12,
                 scale: 1.15,
                 rotate: (index % 2 === 0 ? 3 : -3),
                 transition: { type: 'spring', stiffness: 450, damping: 12 },
               }}
-              className="hero-heading inline-block font-black uppercase tracking-tighter text-[14vw] sm:text-[16vw] md:text-[17vw] lg:text-[18vw] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E9D5FF] via-purple-300 to-[#38BDF8] bg-[length:200%_auto] animate-gradient-shift drop-shadow-[0_10px_35px_rgba(168,85,247,0.35)]"
+              className="hero-heading inline-block font-black uppercase tracking-tighter text-[13.5vw] xs:text-[14.5vw] sm:text-[16vw] md:text-[17vw] lg:text-[18vw] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#E9D5FF] via-purple-300 to-[#38BDF8] bg-[length:200%_auto] animate-gradient-shift drop-shadow-[0_10px_35px_rgba(168,85,247,0.35)]"
             >
               {char}
             </motion.span>
@@ -155,7 +157,7 @@ export const KineticHeroTitle: React.FC = () => {
         </div>
 
         {/* Floating Mini Tech Badge on Hover */}
-        <div className="absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+        <div className="hidden sm:block absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
           <span className="px-2.5 py-0.5 rounded-full bg-purple-950/80 border border-purple-500/40 text-[9px] sm:text-[10px] font-mono text-purple-300 uppercase tracking-widest backdrop-blur-md shadow-lg shadow-purple-500/20 whitespace-nowrap">
             [ AI/ML DECODER ACTIVE ]
           </span>

@@ -268,22 +268,24 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 flex-wrap w-full sm:w-auto mt-1 sm:mt-0">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 w-full sm:w-auto mt-2 sm:mt-0">
             <button
               onClick={() => setIsExpanded(!isExpanded)}
-              className="min-h-[44px] rounded-full px-4 py-2 sm:px-5 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wider border border-purple-400/50 text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5 shadow-sm flex-1 sm:flex-initial"
+              className="min-h-[44px] w-full sm:w-auto rounded-full px-4 py-2.5 sm:px-5 text-xs sm:text-sm font-semibold uppercase tracking-wider border border-purple-400/50 text-purple-300 bg-purple-500/10 hover:bg-purple-500/20 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2 shadow-sm"
             >
-              {isExpanded ? 'Close Technical Deep Dive' : 'Explore Technical Deep Dive'}
+              <span>{isExpanded ? 'Close Technical Deep Dive' : 'Explore Technical Deep Dive'}</span>
               <ArrowDown className={`w-3.5 h-3.5 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
             </button>
-            {project.liveUrl && project.liveUrl !== '#' && (
-              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex items-center">
-                <LiveProjectButton label="Live App" />
+            <div className="flex items-center gap-2 w-full sm:w-auto">
+              {project.liveUrl && project.liveUrl !== '#' && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex-1 sm:flex-initial flex items-center justify-center">
+                  <LiveProjectButton label="Live App" />
+                </a>
+              )}
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex-1 sm:flex-initial flex items-center justify-center">
+                <LiveProjectButton label="GitHub" />
               </a>
-            )}
-            <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="min-h-[44px] flex items-center">
-              <LiveProjectButton label="GitHub" />
-            </a>
+            </div>
           </div>
         </div>
 
@@ -298,11 +300,11 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
               className="w-full mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-neutral-800/80 flex flex-col gap-6"
             >
               {/* Deep Dive Navigation Tabs */}
-              <div className="flex items-center justify-between gap-3 bg-neutral-950/90 p-1.5 rounded-2xl border border-neutral-800 overflow-x-auto no-scrollbar max-w-full">
+              <div className="flex items-center justify-between gap-3 bg-neutral-950/90 p-1.5 rounded-2xl border border-neutral-800 overflow-x-auto no-scrollbar max-w-full snap-x touch-pan-x scroll-smooth -mx-1 px-1 sm:mx-0 sm:px-1.5">
                 <div className="flex items-center gap-1.5 flex-nowrap shrink-0">
                   <button
                     onClick={() => setActiveTab('simulator')}
-                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 snap-start ${
                       activeTab === 'simulator'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
@@ -314,7 +316,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
 
                   <button
                     onClick={() => setActiveTab('pipeline')}
-                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 snap-start ${
                       activeTab === 'pipeline'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'
@@ -326,7 +328,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
 
                   <button
                     onClick={() => setActiveTab('benchmarks')}
-                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 ${
+                    className={`min-h-[44px] flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold uppercase tracking-wider transition-all whitespace-nowrap active:scale-95 snap-start ${
                       activeTab === 'benchmarks'
                         ? 'bg-purple-600 text-white shadow-md'
                         : 'text-neutral-400 hover:text-white hover:bg-neutral-900'

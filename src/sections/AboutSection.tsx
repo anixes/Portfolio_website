@@ -24,7 +24,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
             loading="lazy"
             width="210"
             height="210"
-            className="w-[50px] xs:w-[70px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none opacity-40 sm:opacity-90 drop-shadow-xl"
+            className="w-[40px] xs:w-[55px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none opacity-30 sm:opacity-90 drop-shadow-xl"
           />
         </FadeIn>
       </div>
@@ -54,7 +54,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
             loading="lazy"
             width="210"
             height="210"
-            className="w-[50px] xs:w-[70px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none opacity-40 sm:opacity-90 drop-shadow-xl"
+            className="w-[40px] xs:w-[55px] sm:w-[160px] md:w-[210px] h-auto object-contain select-none opacity-30 sm:opacity-90 drop-shadow-xl"
           />
         </FadeIn>
       </div>

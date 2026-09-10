@@ -8,15 +8,14 @@ interface WordProps {
 }
 
 const Word: React.FC<WordProps> = ({ word, range, progress }) => {
-  const opacity = useTransform(progress, range, [0.3, 1]);
-  const y = useTransform(progress, range, [3, 0]);
+  const opacity = useTransform(progress, range, [0.25, 1]);
 
   return (
     <span className="relative inline-block mr-[0.3em] mb-[0.15em]">
-      <span className="opacity-25 select-none text-[#A0B0C0]">{word}</span>
+      <span className="opacity-20 select-none text-[#A0B0C0]">{word}</span>
       <motion.span
-        style={{ opacity, y }}
-        className="absolute left-0 top-0 text-[#FFFFFF] font-medium drop-shadow-sm"
+        style={{ opacity }}
+        className="absolute left-0 top-0 text-[#FFFFFF] font-medium"
       >
         {word}
       </motion.span>
