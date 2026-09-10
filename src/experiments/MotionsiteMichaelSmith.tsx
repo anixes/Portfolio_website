@@ -129,16 +129,8 @@ export const MotionsiteMichaelSmith: React.FC<MotionsiteMichaelSmithProps> = ({ 
 
       {/* 2. HERO SECTION */}
       <section className="relative min-h-screen w-full flex flex-col justify-between p-6 md:p-12 overflow-hidden">
-        {/* Background HLS Video */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          className="absolute min-w-full min-h-full object-cover -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 z-0 opacity-[0.9]"
-          src="/14777479_3840_2160_30fps.mp4"
-        />
+        {/* Background Ambient Glow */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-[#050507] to-blue-950/30 z-0" />
 
         <div className="absolute inset-0 bg-black/10 z-10 pointer-events-none" />
         {/* Static Noise Overlay */}
