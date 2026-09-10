@@ -3,6 +3,7 @@ import { FadeIn } from '../components/FadeIn';
 import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
 import { DataNebula } from '../components/DataNebula';
+import { KineticHeroTitle } from '../components/KineticHeroTitle';
 
 interface HeroSectionProps {
   onContactClick?: () => void;
@@ -109,17 +110,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
         </header>
       </FadeIn>
 
-      {/* Hero Heading */}
-      <div className="w-full overflow-hidden flex justify-center z-0 mt-4 sm:mt-4 md:-mt-5 px-3 sm:px-4">
-        <FadeIn delay={0.15} y={40} className="w-full text-center">
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none text-center select-none text-[12vw] sm:text-[14vw] md:text-[16vw] lg:text-[17vw]">
-            <span className="inline-block">Hi, i&apos;m</span>{' '}
-            <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#D7E2EA] to-purple-300">Animesh</span>
-          </h1>
-        </FadeIn>
+      {/* Kinetic Animated Hero Heading (No clipping/overflow-hidden so ambient glow blends naturally) */}
+      <div className="w-full overflow-visible flex justify-center z-0 mt-4 sm:mt-4 md:-mt-5 px-3 sm:px-4">
+        <KineticHeroTitle />
       </div>
 
-      {/* Center 3D Floating Avatar */}
+      {/* Center 3D Floating Avatar (Original) */}
       <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none w-full px-4">
         <FadeIn delay={0.2} y={0} duration={1.0} className="w-[180px] xs:w-[220px] sm:w-[320px] md:w-[420px] lg:w-[480px]">
           <Magnet
@@ -135,6 +131,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
           </Magnet>
         </FadeIn>
       </div>
+
+      {/* Seamless Bottom Edge Gradient Blend into #0C0C0C */}
+      <div className="absolute bottom-0 inset-x-0 h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
 
       {/* Bottom Bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 w-full z-20 gap-3 sm:gap-0">

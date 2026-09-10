@@ -66,6 +66,23 @@ html, body, #root {
   -webkit-text-fill-color: transparent;
 }
 
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
 /* Liquid Glass Effect from MotionSites Asme Template */
 .liquid-glass {
   background: rgba(255, 255, 255, 0.03);
