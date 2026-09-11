@@ -2,6 +2,7 @@ import React from 'react';
 import { FadeIn } from '../components/FadeIn';
 import { AnimatedText } from '../components/AnimatedText';
 import { ContactButton } from '../components/ContactButton';
+import { Cpu, Zap, Database } from 'lucide-react';
 
 interface AboutSectionProps {
   onContactClick?: () => void;
@@ -11,7 +12,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-20 flex flex-col justify-center items-center overflow-hidden"
+      className="relative min-h-0 md:min-h-screen w-full bg-[#0C0C0C] px-5 sm:px-8 md:px-10 py-16 sm:py-24 md:py-32 flex flex-col justify-center items-center overflow-hidden"
     >
       {/* Corner Decorative 3D Images */}
       {/* Top-Left: Moon icon */}
@@ -87,12 +88,47 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onContactClick }) =>
         </FadeIn>
 
         {/* Gap between heading & text */}
-        <div className="mt-6 sm:mt-12 md:mt-16 mb-10 sm:mb-16 md:mb-20 w-full flex justify-center px-3 sm:px-4">
+        <div className="mt-4 sm:mt-10 md:mt-14 mb-8 sm:mb-12 md:mb-14 w-full flex justify-center px-3 sm:px-4">
           <AnimatedText
             text="I am a Data Scientist and Machine Learning Engineer focused on building end-to-end AI and data products: from analytics to feature engineering, modeling, and production deployment. I specialize in building deployed applications combining predictive modeling, recommendation systems, SQL analytics, containerized APIs, dashboards, CI/CD automation, and cloud deployment workflows."
-            className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px] text-sm sm:text-base md:text-lg"
+            className="text-[#D7E2EA] font-normal sm:font-medium text-center leading-relaxed max-w-[560px] text-xs xs:text-sm sm:text-base md:text-lg opacity-90"
           />
         </div>
+
+        {/* 3 Core Pillars (Mobile-first scannable cards) */}
+        <FadeIn delay={0.3} y={20} className="w-full max-w-3xl mb-8 sm:mb-12 px-2">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+            <div className="p-4 rounded-2xl bg-[#141418]/80 border border-neutral-800/90 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-2 text-purple-400">
+                <Cpu className="w-4 h-4" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white">Full-Stack ML</span>
+              </div>
+              <p className="text-[11px] xs:text-xs text-neutral-400 leading-relaxed">
+                Gradient boosted models (CatBoost, LightGBM) with Bayesian Optuna tuning & SHAP explainability.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#141418]/80 border border-neutral-800/90 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-2 text-cyan-400">
+                <Zap className="w-4 h-4" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white">Production MLOps</span>
+              </div>
+              <p className="text-[11px] xs:text-xs text-neutral-400 leading-relaxed">
+                14ms FastAPI microservices, 500MB Docker containers, automated CI/CD & AWS EC2 deployment.
+              </p>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-[#141418]/80 border border-neutral-800/90 backdrop-blur-md">
+              <div className="flex items-center gap-2 mb-2 text-emerald-400">
+                <Database className="w-4 h-4" />
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-white">Data Systems</span>
+              </div>
+              <p className="text-[11px] xs:text-xs text-neutral-400 leading-relaxed">
+                43k+ async Playwright scrapers, Pandera schema gates & Uber H3 spatial indexing.
+              </p>
+            </div>
+          </div>
+        </FadeIn>
 
         {/* Contact Button */}
         <FadeIn delay={0.4} y={20}>

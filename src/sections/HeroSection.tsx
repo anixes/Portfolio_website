@@ -109,20 +109,60 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
         </header>
       </FadeIn>
 
-      {/* Hero Center Stage: Heading with integrated 3D sticker */}
+      {/* Hero Center Stage: Heading with integrated 3D sticker + Mobile-First Flow */}
       <div className="relative flex-1 flex flex-col justify-center items-center w-full z-10 px-3 sm:px-4 my-auto">
+        {/* Availability Badge */}
+        <FadeIn delay={0.1} y={-10} className="mb-2 sm:mb-4">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10px] xs:text-[11px] font-mono tracking-wide">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Available for ML & AI Roles</span>
+          </div>
+        </FadeIn>
+
         <KineticHeroTitle />
+
+        {/* Mobile-Native Tagline (Highly legible, normal case, perfectly proportioned) */}
+        <FadeIn delay={0.25} y={15} className="md:hidden w-full flex flex-col items-center">
+          <p className="text-neutral-300 font-light text-xs xs:text-sm text-center max-w-[290px] xs:max-w-xs mt-3 xs:mt-4 leading-relaxed opacity-95">
+            Data Scientist & ML Product Engineer specializing in predictive systems, high-throughput APIs, and production AI.
+          </p>
+
+          {/* Mobile Thumb-Zone Primary Action Buttons */}
+          <div className="flex items-center justify-center gap-3 w-full max-w-xs mt-5">
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="min-h-[46px] flex-1 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg shadow-purple-500/25 active:scale-95 transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              View Projects
+            </button>
+            <button
+              onClick={() => (onContactClick ? onContactClick() : scrollToSection('contact'))}
+              className="min-h-[46px] flex-1 rounded-full px-4 py-2.5 text-xs font-semibold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-white border border-white/15 active:scale-95 transition-all flex items-center justify-center cursor-pointer"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Quick Production Proof Metrics */}
+          <div className="flex items-center justify-center gap-2 mt-4 text-[10px] font-mono text-purple-300/90 bg-purple-500/10 px-3 py-1.5 rounded-full border border-purple-500/20 shadow-sm">
+            <span>3 Prod Models</span>
+            <span className="text-purple-500">•</span>
+            <span>14ms Latency</span>
+            <span className="text-purple-500">•</span>
+            <span>&lt;9% MAPE</span>
+          </div>
+        </FadeIn>
       </div>
 
       {/* Seamless Bottom Edge Gradient Blend into #0C0C0C */}
       <div className="absolute bottom-0 inset-x-0 h-28 sm:h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
 
-      {/* Bottom Bar (Side-by-side with safe area padding on mobile) */}
-      <div className="flex flex-row justify-between items-end pb-6 sm:pb-8 md:pb-10 px-5 sm:px-8 md:px-10 w-full z-20 gap-3">
+      {/* Desktop Bottom Bar (Shown only on md+ screens where horizontal space allows) */}
+      <div className="hidden md:flex flex-row justify-between items-end pb-8 md:pb-10 px-8 md:px-10 w-full z-20 gap-3">
         {/* Left paragraph */}
         <FadeIn delay={0.35} y={20}>
           <p
-            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-relaxed max-w-[170px] xs:max-w-[210px] sm:max-w-[240px] md:max-w-[280px] text-[10.5px] xs:text-xs sm:text-sm md:text-base opacity-90"
+            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-relaxed max-w-[240px] md:max-w-[280px] text-sm md:text-base opacity-90"
           >
             a data scientist & ml engineer focused on building end-to-end ai and data products
           </p>

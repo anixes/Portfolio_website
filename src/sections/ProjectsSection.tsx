@@ -236,17 +236,17 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
   return (
     <div
       ref={containerRef}
-      className="min-h-[560px] md:h-[88vh] md:min-h-[620px] w-full flex items-center justify-center sticky top-16 sm:top-20 md:top-28"
+      className="w-full flex items-center justify-center relative md:sticky md:top-24 lg:top-28 mb-8 sm:mb-12 md:mb-0 md:h-[88vh] md:min-h-[620px]"
     >
       <motion.div
         style={{
-          scale,
-          top: `${index * 24}px`,
+          scale: typeof window !== 'undefined' && window.innerWidth >= 768 ? scale : 1,
+          top: typeof window !== 'undefined' && window.innerWidth >= 768 ? `${index * 24}px` : 0,
         }}
-        className={`relative w-full max-w-6xl h-auto md:h-full max-h-none md:max-h-full rounded-[28px] sm:rounded-[40px] md:rounded-[48px] border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top transition-colors ${
+        className={`relative w-full max-w-6xl h-auto md:h-full max-h-none md:max-h-full rounded-2xl sm:rounded-3xl md:rounded-[40px] border sm:border-2 bg-[#0C0C0C] p-4 sm:p-6 md:p-8 flex flex-col justify-between shadow-2xl origin-top transition-colors ${
           isExpanded
-            ? 'border-purple-500/60 ring-2 ring-purple-500/20 overflow-y-auto'
-            : 'border-[#D7E2EA] overflow-hidden'
+            ? 'border-purple-500/60 ring-1 sm:ring-2 ring-purple-500/20 overflow-y-auto'
+            : 'border-neutral-700 sm:border-[#D7E2EA] overflow-hidden'
         }`}
       >
         {/* Top Row: Title + Category + Deep Dive Action */}
@@ -364,7 +364,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                       <span className="text-[10px] text-neutral-500 font-mono">5 Stages Verified</span>
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2.5 sm:gap-3">
+                    <div className="flex md:grid md:grid-cols-5 gap-2.5 sm:gap-3 overflow-x-auto no-scrollbar snap-x touch-pan-x pb-2 -mx-1 px-1 sm:mx-0 sm:px-0">
                       {project.pipeline.map((step, idx) => {
                         const StepIcon = step.icon;
                         const isSelected = selectedStage === idx;
@@ -373,7 +373,7 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                           <button
                             key={idx}
                             onClick={() => setSelectedStage(idx)}
-                            className={`relative text-left flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all cursor-pointer min-h-[48px] active:scale-95 ${
+                            className={`relative text-left flex flex-col p-3 sm:p-4 rounded-xl sm:rounded-2xl border transition-all cursor-pointer min-h-[48px] active:scale-95 shrink-0 w-36 xs:w-40 md:w-auto snap-start ${
                               isSelected
                                 ? 'bg-purple-950/30 border-purple-500 shadow-md ring-1 ring-purple-500/30'
                                 : 'bg-neutral-950 border-neutral-800/80 hover:border-neutral-700'
@@ -382,8 +382,8 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
                             <div className="flex justify-between items-center mb-2 sm:mb-3">
                               <div className={`p-2 sm:p-2.5 rounded-lg sm:rounded-xl border ${
                                 isSelected 
-                                  ? 'bg-purple-500/20 border-purple-500/40 text-purple-300' 
-                                  : 'bg-white/5 border-white/10 text-neutral-400'
+                                ? 'bg-purple-500/20 border-purple-500/40 text-purple-300' 
+                                : 'bg-white/5 border-white/10 text-neutral-400'
                               }`}>
                                 <StepIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                               </div>
@@ -459,49 +459,77 @@ const Card: React.FC<CardProps> = ({ project, index, totalCards, progress, targe
               )}
             </motion.div>
           ) : (
-            // Default View: Image Preview Showcase
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 w-full flex-grow items-stretch mt-4 sm:mt-6"
+              className="w-full flex-grow mt-4 sm:mt-6"
             >
-              {/* Left Column */}
-              <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-6">
-                <div className="w-full rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
-                  <img
-                    src={project.col1Img1}
-                    alt={`${project.name} preview 1`}
-                    className="w-full object-cover select-none"
-                    style={{ height: 'clamp(130px, 16vw, 220px)' }}
-                    width="420"
-                    height="220"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="w-full rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex-grow">
-                  <img
-                    src={project.col1Img2}
-                    alt={`${project.name} preview 2`}
-                    className="w-full h-full object-cover select-none"
-                    style={{ minHeight: 'clamp(160px, 20vw, 320px)' }}
-                    width="420"
-                    height="320"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-
-              {/* Right Column */}
-              <div className="lg:col-span-7 rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex">
+              {/* Mobile Single Hero Showcase (Prevents 1000px vertical image stack on phones) */}
+              <div className="md:hidden relative w-full rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 shadow-lg">
                 <img
                   src={project.col2Img}
                   alt={`${project.name} full preview`}
-                  className="w-full h-full object-cover select-none min-h-[260px] sm:min-h-[350px] lg:min-h-[420px]"
+                  className="w-full h-48 xs:h-56 object-cover select-none"
                   width="640"
-                  height="420"
+                  height="360"
                   loading="lazy"
                 />
+                {/* Metric Overlay Chips */}
+                <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between gap-1.5 p-2 rounded-xl bg-black/85 border border-white/10 backdrop-blur-md text-[10.5px] font-mono">
+                  <span className="text-purple-300 font-bold truncate">
+                    {project.metrics[0]?.value}
+                  </span>
+                  <span className="text-neutral-500">•</span>
+                  <span className="text-cyan-300 truncate">
+                    {project.metrics[1]?.value}
+                  </span>
+                  <span className="text-neutral-500">•</span>
+                  <span className="text-emerald-300 truncate">
+                    {project.metrics[2]?.value}
+                  </span>
+                </div>
+              </div>
+
+              {/* Desktop 3-Image Bento Grid (Preserved for md+ screens) */}
+              <div className="hidden md:grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 w-full items-stretch">
+                {/* Left Column */}
+                <div className="lg:col-span-5 flex flex-col gap-4 sm:gap-6">
+                  <div className="w-full rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex-shrink-0">
+                    <img
+                      src={project.col1Img1}
+                      alt={`${project.name} preview 1`}
+                      className="w-full object-cover select-none"
+                      style={{ height: 'clamp(130px, 16vw, 220px)' }}
+                      width="420"
+                      height="220"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="w-full rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex-grow">
+                    <img
+                      src={project.col1Img2}
+                      alt={`${project.name} preview 2`}
+                      className="w-full h-full object-cover select-none"
+                      style={{ minHeight: 'clamp(160px, 20vw, 320px)' }}
+                      width="420"
+                      height="320"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+
+                {/* Right Column */}
+                <div className="lg:col-span-7 rounded-[36px] sm:rounded-[48px] overflow-hidden bg-neutral-900 border border-neutral-800 flex">
+                  <img
+                    src={project.col2Img}
+                    alt={`${project.name} full preview`}
+                    className="w-full h-full object-cover select-none min-h-[260px] sm:min-h-[350px] lg:min-h-[420px]"
+                    width="640"
+                    height="420"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </motion.div>
           )}

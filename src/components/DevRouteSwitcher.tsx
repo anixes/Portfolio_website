@@ -17,7 +17,7 @@ export const DevRouteSwitcher: React.FC<DevRouteSwitcherProps> = ({
     return (
       <button
         onClick={() => setIsDismissed(false)}
-        className="fixed bottom-24 right-3 sm:bottom-4 sm:right-4 z-50 w-11 h-11 rounded-full bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-purple-500/30 shadow-2xl backdrop-blur-md transition-all text-xs flex items-center justify-center cursor-pointer active:scale-95"
+        className="hidden md:flex fixed bottom-4 right-4 z-50 w-11 h-11 rounded-full bg-neutral-900/90 hover:bg-neutral-800 text-neutral-300 hover:text-white border border-purple-500/30 shadow-2xl backdrop-blur-md transition-all text-xs items-center justify-center cursor-pointer active:scale-95"
         title="Open Route Switcher"
         aria-label="Open Route Switcher"
       >
@@ -36,7 +36,7 @@ export const DevRouteSwitcher: React.FC<DevRouteSwitcherProps> = ({
   ];
 
   return (
-    <aside aria-label="Developer Route Switcher" className="fixed bottom-20 right-3 sm:bottom-4 sm:right-4 z-50 flex flex-col items-end select-none font-sans scale-85 sm:scale-100 origin-bottom-right">
+    <aside aria-label="Developer Route Switcher" className="hidden md:flex fixed bottom-4 right-4 z-50 flex-col items-end select-none font-sans origin-bottom-right">
       {/* Expanded Panel */}
       {isOpen && (
         <div className="mb-2 w-72 rounded-2xl bg-[#121214]/95 border border-white/10 backdrop-blur-xl shadow-2xl p-3.5 text-xs text-neutral-300 animate-in fade-in slide-in-from-bottom-2 duration-150">

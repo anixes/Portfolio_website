@@ -42,26 +42,42 @@ export const PortfolioDataScience: React.FC = () => {
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.2} y={20} className="flex flex-col sm:flex-row gap-5 items-start sm:items-center w-full sm:w-auto">
-            <div className="flex flex-col gap-2 w-full sm:w-auto">
+          <FadeIn delay={0.2} y={20} className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center w-full md:w-auto">
+            <div className="flex flex-col gap-2.5 w-full sm:w-auto">
+              {/* Email Card Tile */}
               <a
                 href="mailto:animeshdwivedi577@gmail.com"
-                className="inline-flex items-center gap-2 text-[#D7E2EA] font-medium uppercase tracking-wider text-xs xs:text-sm sm:text-lg hover:text-white transition-colors border-b border-[#D7E2EA]/40 pb-1 min-h-[44px] break-all sm:break-normal"
+                className="flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#141418] border border-neutral-800 hover:border-purple-500/50 hover:bg-neutral-900 transition-all min-h-[48px] active:scale-[0.98] group"
               >
-                <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-purple-400 shrink-0" aria-hidden="true" />
-                <span>animeshdwivedi577@gmail.com</span>
-                <ArrowUpRight className="w-4 h-4 opacity-70 shrink-0" aria-hidden="true" />
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+                    <Mail className="w-4 h-4" aria-hidden="true" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-mono text-neutral-200 group-hover:text-white truncate">
+                    animeshdwivedi577@gmail.com
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-purple-400 shrink-0 transition-colors" aria-hidden="true" />
               </a>
+
+              {/* Phone Card Tile */}
               <a
                 href="tel:+916392876782"
-                className="inline-flex items-center gap-2 text-[#D7E2EA] font-medium uppercase tracking-wider text-xs xs:text-sm sm:text-base hover:text-white transition-colors opacity-80 min-h-[44px]"
+                className="flex items-center justify-between gap-3 p-3 sm:p-3.5 rounded-2xl bg-[#141418] border border-neutral-800 hover:border-purple-500/50 hover:bg-neutral-900 transition-all min-h-[48px] active:scale-[0.98] group"
               >
-                <Phone className="w-4 h-4 text-purple-400 shrink-0" aria-hidden="true" />
-                +91 63928 76782
+                <div className="flex items-center gap-2.5">
+                  <div className="p-2 rounded-xl bg-purple-500/10 text-purple-400 shrink-0">
+                    <Phone className="w-4 h-4" aria-hidden="true" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-mono text-neutral-200 group-hover:text-white">
+                    +91 63928 76782
+                  </span>
+                </div>
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-purple-400 shrink-0 transition-colors" aria-hidden="true" />
               </a>
             </div>
 
-            <div className="mt-2 sm:mt-0">
+            <div className="w-full sm:w-auto mt-2 sm:mt-0 flex justify-center">
               <ContactButton onClick={handleContactClick} label="Get In Touch" />
             </div>
           </FadeIn>
