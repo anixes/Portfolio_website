@@ -123,8 +123,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
               className="w-full flex justify-center"
             >
               <img
-                src="https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png"
-                alt="Animesh Dwivedi Portrait"
+                src="/animesh-pixar-2.png"
+                alt="Animesh Dwivedi 3D Avatar"
                 className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl max-h-[24vh] sm:max-h-[42vh]"
               />
             </Magnet>
