@@ -94,7 +94,7 @@ export const KineticHeroTitle: React.FC = () => {
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="flex items-center justify-center gap-1 sm:gap-2 leading-none mb-3 sm:mb-2 -translate-y-4 sm:translate-y-0"
+        className="flex items-center justify-center gap-1 sm:gap-2 leading-none mb-1.5 sm:mb-2"
       >
         {topPhrase.map((char, index) => (
           <motion.span
@@ -165,7 +165,7 @@ export const KineticHeroTitle: React.FC = () => {
           }}
           whileHover={{ scale: 1.14, rotate: 10 }}
           whileTap={{ scale: 0.92, rotate: -6 }}
-          className="absolute -top-11 xs:-top-13 sm:-top-20 md:-top-24 lg:-top-28 xl:-top-32 right-0 sm:right-1 md:right-2 z-30 pointer-events-auto cursor-pointer"
+          className="absolute -top-[64px] xs:-top-[72px] sm:-top-24 md:-top-32 lg:-top-36 xl:-top-44 right-0 sm:right-1 md:right-0 z-30 pointer-events-auto cursor-pointer"
         >
           <div className="relative group/sticker">
             <motion.img

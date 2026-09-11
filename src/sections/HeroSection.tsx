@@ -51,7 +51,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
   };
 
   return (
-    <section className="relative h-[100dvh] min-h-[100dvh] w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C]">
+    <section className="relative min-h-0 md:min-h-[100dvh] md:h-[100dvh] w-full flex flex-col justify-between overflow-x-clip bg-[#0C0C0C] pt-2 pb-10 sm:pb-14 md:py-0">
       {/* 3D Interactive Data Nebula */}
       <DataNebula />
       {/* Navbar Header */}
@@ -110,7 +110,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
       </FadeIn>
 
       {/* Hero Center Stage: Heading with integrated 3D sticker + Mobile-First Flow */}
-      <div className="relative flex-1 flex flex-col justify-center items-center w-full z-10 px-3 sm:px-4 my-auto">
+      <div className="relative flex-1 flex flex-col justify-center items-center w-full z-10 px-3 sm:px-4 my-4 sm:my-6 md:my-auto">
         {/* Availability Badge */}
         <FadeIn delay={0.1} y={-10} className="mb-2 sm:mb-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10px] xs:text-[11px] font-mono tracking-wide">
@@ -155,7 +155,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
       </div>
 
       {/* Seamless Bottom Edge Gradient Blend into #0C0C0C */}
-      <div className="absolute bottom-0 inset-x-0 h-28 sm:h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
+      <div className="hidden md:block absolute bottom-0 inset-x-0 h-28 sm:h-36 bg-gradient-to-t from-[#0C0C0C] via-[#0C0C0C]/60 to-transparent pointer-events-none z-10" />
 
       {/* Desktop Bottom Bar (Shown only on md+ screens where horizontal space allows) */}
       <div className="hidden md:flex flex-row justify-between items-end pb-8 md:pb-10 px-8 md:px-10 w-full z-20 gap-3">

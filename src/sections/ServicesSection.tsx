@@ -89,7 +89,7 @@ export const ServicesSection: React.FC = () => {
   return (
     <section
       id="services"
-      className="w-full bg-[#0C0C0C] text-[#D7E2EA] px-5 sm:px-8 md:px-12 py-24 sm:py-32 relative z-10 border-t border-neutral-900 overflow-hidden"
+      className="w-full bg-[#0C0C0C] text-[#D7E2EA] px-5 sm:px-8 md:px-12 py-14 sm:py-20 md:py-32 relative z-10 border-t border-neutral-900 overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/5 rounded-full blur-[140px] pointer-events-none" />
@@ -97,7 +97,7 @@ export const ServicesSection: React.FC = () => {
 
       <div className="max-w-6xl mx-auto flex flex-col items-center relative z-20">
         {/* Section Heading */}
-        <FadeIn delay={0} y={40} className="w-full text-center mb-16 sm:mb-20">
+        <FadeIn delay={0} y={40} className="w-full text-center mb-10 sm:mb-16 md:mb-20">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-mono font-semibold uppercase tracking-widest mb-4">
             <Terminal className="w-3.5 h-3.5" />
             Core Competencies & Capabilities
