@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FadeIn } from '../components/FadeIn';
-import { Magnet } from '../components/Magnet';
 import { ContactButton } from '../components/ContactButton';
 import { DataNebula } from '../components/DataNebula';
 import { KineticHeroTitle } from '../components/KineticHeroTitle';
@@ -110,26 +109,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick }) => {
         </header>
       </FadeIn>
 
-      {/* Hero Center Stage: Heading & Proportionately Nestled Avatar */}
+      {/* Hero Center Stage: Heading with integrated 3D sticker */}
       <div className="relative flex-1 flex flex-col justify-center items-center w-full z-10 px-3 sm:px-4 my-auto">
         <KineticHeroTitle />
-
-        {/* Center 3D Floating Avatar (Proportionally scaled for mobile screens) */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none w-full px-4 -translate-y-4 sm:translate-y-0">
-          <FadeIn delay={0.2} y={0} duration={1.0} className="w-[110px] xs:w-[124px] sm:w-[260px] md:w-[360px] lg:w-[440px]">
-            <Magnet
-              padding={80}
-              strength={2.5}
-              className="w-full flex justify-center"
-            >
-              <img
-                src="/animesh-pixar-2.png"
-                alt="Animesh Dwivedi 3D Avatar"
-                className="w-full h-auto object-contain select-none pointer-events-none drop-shadow-2xl max-h-[24vh] sm:max-h-[42vh]"
-              />
-            </Magnet>
-          </FadeIn>
-        </div>
       </div>
 
       {/* Seamless Bottom Edge Gradient Blend into #0C0C0C */}

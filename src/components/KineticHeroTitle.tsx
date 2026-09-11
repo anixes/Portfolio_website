@@ -7,6 +7,7 @@ const TARGET_NAME = 'ANIMESH';
 export const KineticHeroTitle: React.FC = () => {
   const [scrambleName, setScrambleName] = useState(TARGET_NAME);
   const [isScrambling, setIsScrambling] = useState(false);
+  const [stickerVariant, setStickerVariant] = useState<1 | 2>(1);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Mouse Parallax Motion Values
@@ -155,6 +156,41 @@ export const KineticHeroTitle: React.FC = () => {
             </motion.span>
           ))}
         </div>
+
+        {/* 3D Character Head Sticker: Nestled on the top-right shoulder of ANIMESH */}
+        <motion.div
+          onClick={(e) => {
+            e.stopPropagation();
+            setStickerVariant((prev) => (prev === 1 ? 2 : 1));
+          }}
+          whileHover={{ scale: 1.14, rotate: 10 }}
+          whileTap={{ scale: 0.92, rotate: -6 }}
+          className="absolute -top-11 xs:-top-13 sm:-top-20 md:-top-24 lg:-top-28 xl:-top-32 right-0 sm:right-1 md:right-2 z-30 pointer-events-auto cursor-pointer"
+        >
+          <div className="relative group/sticker">
+            <motion.img
+              key={stickerVariant}
+              initial={{ scale: 0.8, rotate: -10, opacity: 0 }}
+              animate={{
+                scale: 1,
+                opacity: 1,
+                y: [-4, 4, -4],
+                rotate: stickerVariant === 2 ? [-2, 2, -2] : [4, 8, 4],
+              }}
+              transition={{
+                y: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+                rotate: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+              }}
+              src={stickerVariant === 1 ? '/animesh-sticker.png' : '/animesh-sticker-angle.png'}
+              alt="Animesh 3D Avatar Sticker"
+              className="w-14 xs:w-16 sm:w-24 md:w-32 lg:w-40 xl:w-48 h-auto object-contain select-none drop-shadow-[0_16px_32px_rgba(0,0,0,0.9)] filter drop-shadow-[0_0_28px_rgba(168,85,247,0.4)] transition-transform duration-200"
+            />
+            {/* Interactive hint badge */}
+            <span className="hidden sm:inline-block absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 rounded-full bg-neutral-900/90 border border-purple-500/40 text-[9px] font-mono text-purple-200 uppercase tracking-widest backdrop-blur-md opacity-0 group-hover/sticker:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
+              CLICK TO FLIP 🔄
+            </span>
+          </div>
+        </motion.div>
 
         {/* Floating Mini Tech Badge on Hover */}
         <div className="hidden sm:block absolute -bottom-5 sm:-bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
